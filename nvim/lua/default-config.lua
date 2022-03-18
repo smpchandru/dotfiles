@@ -1,9 +1,34 @@
 CONFIG_PATH = vim.fn.stdpath("config")
 DATA_PATH = vim.fn.stdpath("data")
 CACHE_PATH = vim.fn.stdpath("cache")
+local g = vim.g
+local disabled_built_ins = {
+	"2html_plugin",
+	"getscript",
+	"getscriptPlugin",
+	"gzip",
+	"logipat",
+	-- "netrw",
+	-- "netrwPlugin",
+	-- "netrwSettings",
+	-- "netrwFileHandlers",
+	"matchit",
+	"matchparen",
+	"tar",
+	"tarPlugin",
+	"rrhelper",
+	"vimball",
+	"vimballPlugin",
+	"zip",
+	"zipPlugin",
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+	g["loaded_" .. plugin] = 1
+end
 
 O = {
-	colorscheme = "vscode",
+	colorscheme = "gruvbox-material",
 	leader_key = " ",
 	hidden_files = true,
 	wrap_lines = false,
@@ -35,7 +60,7 @@ O = {
 		quick_scope = { enable = false },
 		choosewin = { enable = false },
 		vim_go = { enable = true },
-		galaxyline = { enable = false },
+		galaxyline = { enable = true },
 		barbar = { enable = false },
 		sumneko = { enable = false },
 		markdown_preview = { enable = false },
@@ -55,6 +80,7 @@ O = {
 		symbol_outline = { enable = false },
 		lens = { enable = false },
 		kommentary = { enable = false },
-		dashboard = { enable = true },
+		dashboard = { enable = false },
 	},
 }
+-- vim.g.git_messenger_no_default_mappings = true

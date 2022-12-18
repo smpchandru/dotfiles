@@ -46,6 +46,9 @@ map("n", "<s-tab>", ":bp<CR>", { desc = "Previous buffer", silent = true, norema
 map("n", "n", "nzzv", { silent = true, noremap = true })
 map("n", "N", "Nzzv", { silent = true, noremap = true })
 map("n", "J", "mzJ`z", { silent = true, noremap = true })
+map("n", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })
+map("n", "\\dd", '"_dd', { desc = "Copy to system clipboard", silent = true, noremap = true })
+map("n", "\\p", '"+p', { desc = "Copy to system clipboard", silent = true, noremap = true })
 vim.cmd([[
         inoremap <A-h> <C-\><C-N><C-w>h
         inoremap <A-j> <C-\><C-N><C-w>j
@@ -59,7 +62,10 @@ map("v", "<TAB>", ">gv", { desc = "Move visual text rigt ", noremap = true, sile
 map("v", "<C-/>", "gb", { desc = "Comment block", silent = true })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down", silent = true, noremap = true })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text up", silent = true, noremap = true })
--- Insert mode mapings(Not so important)
+map("v", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })
+map("v", "\\d", '"_d', { desc = "Delete with black hole", silent = true, noremap = true })
+
+map("x", "\\p", '"_dP', { desc = "Paste without yank", silent = true, noremap = true })
 -- map("i", ",,", "<c-g>u", { silent = true, noremap = true })
 -- map("i", "))", "<c-g>u", { silent = true, noremap = true })
 -- map("i", ".", ".<c-g>u", { silent = true, noremap = true })

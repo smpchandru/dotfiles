@@ -1,4 +1,4 @@
-require("impatient")
+-- require("impatient")
 require("default-config")
 vim.cmd("luafile " .. CONFIG_PATH .. "/ch-config.lua")
 require("plugins")

@@ -11,14 +11,13 @@ vim.bo.expandtab = false -- Converts tabs to spaces
 vim.bo.smartindent = true -- Makes indenting smart
 vim.wo.number = true -- set numbered lines
 vim.wo.cursorline = true -- Enable highlighting of the current line
--- opt.showtabline = 2 -- Always show tabs
+--opt.showtabline = 1 -- Always show tabs
 opt.showmode = false -- We don't need to see things like -- INSERT -- anymore
 opt.backup = false -- This is recommended by coc
 opt.writebackup = false -- This is recommended by coc
 vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
-opt.updatetime = 300 -- Faster completion
+opt.updatetime = 50 -- Faster completion
 opt.timeoutlen = 1000 -- By default timeoutlen is 1000 ms
--- opt.clipboard = "unnamedplus" -- Copy paste between vim and everything else
 opt.shiftwidth = 4
 opt.tabstop = 4
 vim.o.guifont = "JetBrainsMono Nerd Font Mono:h20"
@@ -49,8 +48,7 @@ vim.cmd("set whichwrap+=<,>,[,],h,l") -- move to next line with theses keys
 vim.cmd("set ts=4") -- Insert 2 spaces for a tab
 vim.cmd("set nocompatible")
 vim.cmd("set relativenumber")
-vim.cmd("set noswapfile")
---opt.noswapfile = true
+opt.swapfile = false
 vim.o.pumblend = 5
 vim.o.winblend = 5
 vim.fn.has("")

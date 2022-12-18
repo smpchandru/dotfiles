@@ -69,19 +69,19 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
 })
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"[d",
 	"<cmd>lua vim.diagnostic.goto_prev()<CR>",
 	{ desc = "Prev diagnostic", noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"]d",
 	"<cmd>lua vim.diagnostic.goto_next()<CR>",
 	{ desc = "Next diagnostic", noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"<space>q",
 	"<cmd>lua vim.diagnostic.setloclist()<CR>",
@@ -91,50 +91,40 @@ vim.api.nvim_set_keymap(
 
 -- Mappings.
 -- See `:help vim.lsp.*` for documentation on any of the below functions
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"gD",
 	"<cmd>lua vim.lsp.buf.declaration()<CR>",
 	{ desc = "Declaration", noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"gd",
 	"<cmd>lua vim.lsp.buf.definition()<CR>",
 	{ desc = "Definition", noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"gr",
 	"<cmd>lua vim.lsp.buf.references()<CR>",
 	{ desc = "References", noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
 	"C-]",
 	"<cmd>lua vim.lsp.buf.definition()<CR>",
 	{ desc = "Definition", noremap = true, silent = true }
 )
-vim.api.nvim_set_keymap(
-	"n",
-	"<s-k>",
-	"<cmd>lua vim.lsp.buf.hover()<CR>",
-	{ desc = "Hover", noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
+vim.keymap.set("n", "<s-k>", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Hover", noremap = true, silent = true })
+vim.keymap.set(
 	"n",
 	"gi",
 	"<cmd>lua vim.lsp.buf.implementation()<CR>",
 	{ desc = "implementation", noremap = true, silent = true }
 )
--- vim.api.nvim_set_keymap("n", "<s-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<F2>",
-	"<cmd>lua vim.lsp.buf.rename()<CR>",
-	{ desc = "Rename", noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
+-- vim.keymap.set("n", "<s-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename", noremap = true, silent = true })
+vim.keymap.set(
 	"n",
 	"<space>f",
 	"<cmd>lua vim.lsp.buf.format{ async = true }<CR>",

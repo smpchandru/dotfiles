@@ -81,7 +81,7 @@ vim.cmd([[
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 ]])
-
 vim.g.do_filetype_lua = 1
 --vim.g.did_load_filetypes = 0
 --vim.cmd(":hi Keyword cterm=italic gui=italic")
+--vim.api.nvim_set_hl("Noraml", { bg = "none" })

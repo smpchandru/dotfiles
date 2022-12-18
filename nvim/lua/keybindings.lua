@@ -1,15 +1,10 @@
 -- Normal mode key bindgings
 --
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-map(
-	"n",
-	"<Leader>m",
-	':lua require("utils").ToggleMouse()<CR>',
-	{ desc = "Toggle mounse", noremap = true, silent = true }
-)
+map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })
 if O.plugin.symbol_outline.enable == true then
-	map("n", "<leader>o", ":SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
+	map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
 end
 -- resize windows
 map("n", "<M-j>", ":resize -2<CR>", { desc = "Resize window down", noremap = true, silent = true })
@@ -49,6 +44,8 @@ map("n", "J", "mzJ`z", { silent = true, noremap = true })
 map("n", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })
 map("n", "\\dd", '"_dd', { desc = "Copy to system clipboard", silent = true, noremap = true })
 map("n", "\\p", '"+p', { desc = "Copy to system clipboard", silent = true, noremap = true })
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+map("n", "<leader>e", "<cmd>Ex<cr>")
 vim.cmd([[
         inoremap <A-h> <C-\><C-N><C-w>h
         inoremap <A-j> <C-\><C-N><C-w>j
@@ -64,8 +61,4 @@ map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down", silent = true, nore
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text up", silent = true, noremap = true })
 map("v", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })
 map("v", "\\d", '"_d', { desc = "Delete with black hole", silent = true, noremap = true })
-
 map("x", "\\p", '"_dP', { desc = "Paste without yank", silent = true, noremap = true })
--- map("i", ",,", "<c-g>u", { silent = true, noremap = true })
--- map("i", "))", "<c-g>u", { silent = true, noremap = true })
--- map("i", ".", ".<c-g>u", { silent = true, noremap = true })

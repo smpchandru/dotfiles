@@ -42,13 +42,15 @@ M.config = function()
 				luasnip.lsp_expand(args.body)
 			end,
 		},
-		-- documentation = {
-		-- 	border = "rounded",
-		-- 	winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-		-- },
 		window = {
-			-- completion = comp.config.window.bordered(),
-			documentation = comp.config.window.bordered(),
+			documentation = {
+				border = "single",
+				winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+			},
+			completion = {
+				border = "single",
+				winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+			},
 		},
 		confirmation = {
 			default_behavior = comp.ConfirmBehavior.Replace,

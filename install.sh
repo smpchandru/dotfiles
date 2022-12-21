@@ -8,5 +8,7 @@ then
 fi
 git clone https://github.com/smpchandru/cnvim.git
 cp -r cnvim/nvim $HOME/.config/nvim
-nvim -c ":PackerSync"
+nvim --headless \
+    -c 'autocmd User PackerComplete quitall' \
+    -c 'PackerSync'
 

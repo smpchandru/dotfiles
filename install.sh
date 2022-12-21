@@ -7,6 +7,5 @@ then
 	sudo apt-get install python3-neovim
 fi
 git clone https://github.com/smpchandru/cnvim.git ~/.config/nvim
-nvim --headless \
--c 'autocmd User PackerComplete quitall' \
+nvim 
 

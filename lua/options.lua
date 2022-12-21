@@ -75,8 +75,8 @@ command -nargs=0 NeovideToggleFullscreen :let g:neovide_fullscreen = !g:neovide_
 noremap <F11> :NeovideToggleFullscreen<CR>
 ]])
 end
-vim.notify = require("notify")
-vim.o.ch = 1
+-- vim.notify = require("notify")
+vim.o.ch = 0
 vim.o.scrolloff = 10
 vim.cmd([[
 let g:gruvbox_material_enable_italic = 1

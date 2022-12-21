@@ -42,7 +42,7 @@ local sigConfig = {
 	max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
 	transpancy = 100,
 	handler_opts = {
-		border = "rounded", -- double, single, shadow, none
+		border = "single", -- double, single, shadow, none
 	},
 	extra_trigger_chars = { "(", "," }, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
 }

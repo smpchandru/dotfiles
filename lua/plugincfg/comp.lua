@@ -4,24 +4,8 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local function cmp_hghlights()
-	vim.api.nvim_set_hl(0, "CmpBorder", { fg = "#ded8d7" })
-	vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = "#ded8d7" })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#808080" })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#569CD6" })
-	vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#9CDCFE" })
-	vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#C586C0" })
-	vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#D4D4D4" })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
-	vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
-	vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
-	vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
-	vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindFunction" })
-	vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindFunction" })
-end
-
 M.config = function()
-	cmp_hghlights()
+	--	cmp_hghlights()
 	local compare = require("cmp.config.compare")
 	local types = require("cmp.types")
 	local comp = require("cmp")

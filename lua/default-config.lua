@@ -8,10 +8,6 @@ local disabled_built_ins = {
 	"getscriptPlugin",
 	"gzip",
 	"logipat",
-	-- "netrw",
-	-- "netrwPlugin",
-	-- "netrwSettings",
-	-- "netrwFileHandlers",
 	"matchit",
 	"matchparen",
 	"tar",
@@ -83,4 +79,3 @@ O = {
 		dashboard = { enable = false },
 	},
 }
--- vim.g.git_messenger_no_default_mappings = true

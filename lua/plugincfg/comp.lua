@@ -95,7 +95,7 @@ M.config = function()
 					luasnip = "[snp]",
 					nvim_lua = "[lua]",
 					latex_symbols = "[ltx]",
-					dictionary = "[dic]",
+					--dictionary = "[dic]",
 					path = "[Pat]",
 					calc = "[Cal]",
 				},
@@ -115,7 +115,7 @@ M.config = function()
 			{ name = "vim-dadbod-completion" },
 			{ name = "latex_symbols" },
 			{ name = "buffer", keyword_length = 5 },
-			{ name = "dictionary", keyword_length = 4 },
+			-- { name = "dictionary", keyword_length = 4 },
 			--{ name = "nvim_lsp_signature_help" },
 		},
 	})
@@ -131,14 +131,14 @@ M.config = function()
 			{ name = "cmdline" },
 		}),
 	})
-	require("cmp_dictionary").setup({
-		dic = {
-			["*"] = "/usr/share/dict/words",
-		},
-		exact = 2,
-		async = false,
-		capacity = 5,
-		debug = false,
-	})
+	-- require("cmp_dictionary").setup({
+	-- 	dic = {
+	-- 		["*"] = "/usr/share/dict/words",
+	-- 	},
+	-- 	exact = 2,
+	-- 	async = false,
+	-- 	capacity = 5,
+	-- 	debug = false,
+	-- })
 end
 return M

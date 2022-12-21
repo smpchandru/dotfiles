@@ -8,6 +8,5 @@ then
 fi
 git clone https://github.com/smpchandru/cnvim.git ~/.config/nvim
 nvim --headless \
- -c 'autocmd User PackerComplete quitall' \
- -c 'PackerSync'
+-c 'autocmd User PackerComplete quitall' \
 

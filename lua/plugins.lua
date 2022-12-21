@@ -1,4 +1,4 @@
-vim.opt.termguicolors = true
+--vim.opt.termguicolors = true
 local M = {}
 
 function M.setup(bootstrap)
@@ -14,8 +14,10 @@ function M.setup(bootstrap)
 				return require("packer.util").float({ border = "single" })
 			end,
 		},
+		ensure_dependencies = true,
+		compile_on_sync = true,
+		auto_reload_compiled = true,
 	})
-	vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 	packer.startup({
 		function(use)
 			-- Packer can manage itself as an optional plugin
@@ -54,7 +56,6 @@ function M.setup(bootstrap)
 				"L3MON4D3/LuaSnip",
 				requires = {
 					"rafamadriz/friendly-snippets",
-					event = "InsertCharPre",
 				},
 			})
 			use({
@@ -79,19 +80,20 @@ function M.setup(bootstrap)
 			})
 			use({
 				"hrsh7th/nvim-cmp",
-				requires = {
-					"hrsh7th/cmp-nvim-lsp",
-					"hrsh7th/cmp-buffer",
-					"hrsh7th/cmp-path",
-					"hrsh7th/cmp-calc",
-					"hrsh7th/cmp-nvim-lua",
-					"f3fora/cmp-spell",
-					"kdheepak/cmp-latex-symbols",
-					"hrsh7th/cmp-cmdline",
-					"uga-rosa/cmp-dictionary",
-					"hrsh7th/cmp-nvim-lsp-signature-help",
-					"saadparwaiz1/cmp_luasnip",
-				},
+			})
+			use({
+				after = "hrsh7th/nvim-cmp",
+				{ "hrsh7th/cmp-nvim-lsp" },
+				{ "hrsh7th/cmp-buffer" },
+				{ "hrsh7th/cmp-path" },
+				{ "hrsh7th/cmp-calc" },
+				{ "hrsh7th/cmp-nvim-lua" },
+				{ "f3fora/cmp-spell" },
+				{ "kdheepak/cmp-latex-symbols" },
+				{ "hrsh7th/cmp-cmdline" },
+				{ "uga-rosa/cmp-dictionary" },
+				{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+				{ "saadparwaiz1/cmp_luasnip" },
 			})
 			-- git related
 			use({
@@ -149,18 +151,24 @@ function M.setup(bootstrap)
 			use({
 				"nvim-treesitter/nvim-treesitter",
 				run = function()
-					pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+					require("nvim-treesitter.install").update({ with_sync = true })
 				end,
 			})
 			use({
 				"nvim-treesitter/playground",
+				after = "nvim-treesitter",
 			})
 			use({
 				"nvim-treesitter/nvim-treesitter-textobjects",
+				after = "nvim-treesitter",
 			})
 			use({
 				"romgrk/nvim-treesitter-context",
+				after = "nvim-treesitter",
+			})
+			use({
 				"p00f/nvim-ts-rainbow",
+				after = "nvim-treesitter",
 			})
 
 			use({
@@ -224,7 +232,6 @@ function M.setup(bootstrap)
 			if bootstrap then
 				require("packer").sync()
 			end
-			--		require("packer_compiled")
 		end,
 		config = {
 			display = {
@@ -233,8 +240,13 @@ function M.setup(bootstrap)
 			compile_path = vim.fn.stdpath("config") .. "/lua/packer_compiled.lua",
 		},
 	})
+	local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+	vim.api.nvim_create_autocmd("BufWritePost", {
+		command = "source <afile> | PackerCompile",
+		group = packer_group,
+		pattern = vim.fn.expand("$MYVIMRC"),
+	})
 	if bootstrap then
-		print("Installing required plugins")
 		return
 	end
 	M.config()

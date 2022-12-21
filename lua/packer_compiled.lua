@@ -150,10 +150,8 @@ _G.packer_plugins = {
     url = "https://github.com/j-hui/fidget.nvim"
   },
   ["friendly-snippets"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/chandru/.local/share/nvim/site/pack/packer/opt/friendly-snippets",
+    loaded = true,
+    path = "/home/chandru/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
   fzf = {
@@ -304,18 +302,24 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
+    load_after = {},
     loaded = true,
-    path = "/home/chandru/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    needs_bufread = false,
+    path = "/home/chandru/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
     url = "https://github.com/romgrk/nvim-treesitter-context"
   },
   ["nvim-treesitter-textobjects"] = {
+    load_after = {},
     loaded = true,
-    path = "/home/chandru/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    needs_bufread = false,
+    path = "/home/chandru/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-ts-rainbow"] = {
+    load_after = {},
     loaded = true,
-    path = "/home/chandru/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    needs_bufread = false,
+    path = "/home/chandru/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow",
     url = "https://github.com/p00f/nvim-ts-rainbow"
   },
   ["packer.nvim"] = {
@@ -324,8 +328,10 @@ _G.packer_plugins = {
     url = "https://github.com/wbthomason/packer.nvim"
   },
   playground = {
+    load_after = {},
     loaded = true,
-    path = "/home/chandru/.local/share/nvim/site/pack/packer/start/playground",
+    needs_bufread = true,
+    path = "/home/chandru/.local/share/nvim/site/pack/packer/opt/playground",
     url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
@@ -418,6 +424,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter ]]
+vim.cmd [[ packadd playground ]]
+vim.cmd [[ packadd nvim-ts-rainbow ]]
+vim.cmd [[ packadd nvim-treesitter-context ]]
+vim.cmd [[ packadd nvim-treesitter-textobjects ]]
+time([[Sequenced loading]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
@@ -425,10 +439,6 @@ time([[Defining lazy-load filetype autocommands]], true)
 vim.cmd [[au FileType go ++once lua require("packer.load")({'vim-delve'}, { ft = "go" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
-  -- Event lazy-loads
-time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertCharPre * ++once lua require("packer.load")({'friendly-snippets'}, { event = "InsertCharPre *" }, _G.packer_plugins)]]
-time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
 _G._packer.inside_compile = false

@@ -515,6 +515,7 @@ return packer.startup({
 			"echasnovski/mini.nvim",
 			config = function()
 				require("mini.surround").setup()
+				vim.api.nvim_set_keymap("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { noremap = true })
 			end,
 		})
 		use({

@@ -10,7 +10,7 @@ opt.conceallevel = 0 -- So that I can see `` in markdown files
 vim.bo.expandtab = false -- Converts tabs to spaces
 vim.bo.smartindent = true -- Makes indenting smart
 vim.wo.number = true -- set numbered lines
-vim.wo.cursorline = true -- Enable highlighting of the current line
+vim.wo.cursorline = false -- Enable highlighting of the current line
 --opt.showtabline = 1 -- Always show tabs
 opt.showmode = false -- We don't need to see things like -- INSERT -- anymore
 opt.backup = false -- This is recommended by coc
@@ -66,6 +66,7 @@ vim.g.highlightedyank_highlight_duration = 10000
 vim.g.gruvbox_material_background = "dark"
 vim.cmd("colorscheme " .. O.colorscheme)
 vim.opt.listchars:append("eol:↴")
+vim.opt.mouse = ""
 if vim.g.neovide then
 	vim.cmd("set mouse=a")
 	vim.cmd([[

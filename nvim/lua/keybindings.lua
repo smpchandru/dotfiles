@@ -38,8 +38,8 @@ map("n", "<leader>w", ":Telescope projects<CR>", { desc = "Workspaces", silent =
 map("n", "<tab>", ":bnext<CR>", { desc = "Next buffer", silent = true, noremap = true })
 map("n", "<s-tab>", ":bp<CR>", { desc = "Previous buffer", silent = true, noremap = true })
 -- misc
-map("n", "n", "nzzv", { silent = true, noremap = true })
-map("n", "N", "Nzzv", { silent = true, noremap = true })
+map("n", "n", "nzz", { silent = true, noremap = true })
+map("n", "N", "Nzz", { silent = true, noremap = true })
 map("n", "J", "mzJ`z", { silent = true, noremap = true })
 map("n", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })
 map("n", "\\dd", '"_dd', { desc = "Copy to system clipboard", silent = true, noremap = true })

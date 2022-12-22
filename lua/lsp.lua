@@ -1,6 +1,6 @@
 -- Lspkind config
 local M = {}
-local on_attach = function(_, bufnr)
+local M.on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -36,6 +36,7 @@ local on_attach = function(_, bufnr)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
 end
+function M.setup()
 local servers = {
 	rust_analyzer = {},
 	gopls = {},
@@ -143,3 +144,5 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
 })
+end
+return M

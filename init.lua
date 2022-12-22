@@ -1,4 +1,3 @@
--- require("impatient")
 local execute = vim.api.nvim_command
 local fn = vim.fn
 local bootstrap = false
@@ -10,7 +9,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
 	execute("packadd packer.nvim")
 end
-
+if not bootstrap then
+	require("impatient")
+end
 require("default-config")
 dofile(CONFIG_PATH .. "/ch-config.lua")
 require("plugins").setup(bootstrap)

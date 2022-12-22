@@ -93,8 +93,8 @@ function M.setup(bootstrap)
 				{ "hrsh7th/cmp-cmdline" },
 				{ "saadparwaiz1/cmp_luasnip" },
 			})
-			use({"uga-rosa/cmp-dictionary", after = "hrsh7th/nvim-cmp"})
-			use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "hrsh7th/nvim-cmp" })
+			use({"uga-rosa/cmp-dictionary"})
+			use({"hrsh7th/cmp-nvim-lsp-signature-help"})
 			-- git related
 			use({
 				"lewis6991/gitsigns.nvim",

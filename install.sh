@@ -6,6 +6,11 @@ then
 	sudo dpkg -i nvim-linux64.deb
 	sudo apt-get install python3-neovim
 fi
+if [ -d "$HOOME/.config/nvim" ]
+then
+	echo "Neovim config exist taking backup as $HOME/.config/nvim_old"
+	mv $HOME/.config/nvim $HOME/.config/nvim_old
+fi
 git clone https://github.com/smpchandru/cnvim.git ~/.config/nvim
-nvim 
+read "All set , use : nvim [<File >] to start your new neovim expirience"
 

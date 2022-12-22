@@ -110,7 +110,7 @@ function M.get_go_func_info()
 					)
 					isMultiRet = true
 				end
-				print(vim.inspect(par))
+				--print(vim.inspect(par))
 			end
 			if not isMultiRet then
 				table.insert(returnInfo,

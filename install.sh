@@ -4,7 +4,7 @@ then
 	echo "Neovim not present installing"
 	curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
 	sudo dpkg -i nvim-linux64.deb
-	sudo apt-get install python3-neovim
+	sudo apt-get -y install python3-neovim fzf
 fi
 if [ -d "$HOOME/.config/nvim" ]
 then

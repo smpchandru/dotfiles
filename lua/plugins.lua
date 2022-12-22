@@ -93,8 +93,8 @@ function M.setup(bootstrap)
 				{ "hrsh7th/cmp-cmdline" },
 				{ "saadparwaiz1/cmp_luasnip" },
 			})
-			use({"uga-rosa/cmp-dictionary"})
-			use({"hrsh7th/cmp-nvim-lsp-signature-help"})
+			use({ "uga-rosa/cmp-dictionary" })
+			use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
 			-- git related
 			use({
 				"lewis6991/gitsigns.nvim",
@@ -208,12 +208,7 @@ function M.setup(bootstrap)
 				"anuvyklack/hydra.nvim",
 				requires = "anuvyklack/keymap-layer.nvim",
 			})
-			use({
-				"junegunn/fzf",
-				run = function()
-					vim.fn["fzf#install()"]()
-				end,
-			})
+			use({ "junegunn/fzf" })
 			use({
 				"junegunn/fzf.vim",
 			})

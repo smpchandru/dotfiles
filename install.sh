@@ -12,5 +12,5 @@ then
 	mv $HOME/.config/nvim $HOME/.config/nvim_old
 fi
 git clone https://github.com/smpchandru/cnvim.git ~/.config/nvim
-echo "All set , use : nvim [<File >] to start your new neovim expirience"
+nvim 
 

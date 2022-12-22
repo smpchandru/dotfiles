@@ -230,6 +230,7 @@ function M.setup(bootstrap)
 			use("chaoren/vim-wordmotion")
 			use("ThePrimeagen/vim-be-good")
 			if bootstrap then
+				print("Installing plugins")
 				require("packer").sync()
 			end
 		end,

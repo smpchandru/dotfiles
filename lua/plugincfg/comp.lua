@@ -72,7 +72,7 @@ M.config = function()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, { "i", "s", "c" }),
 
 			["<S-Tab>"] = comp.mapping(function(fallback)
 				if comp.visible() then
@@ -82,7 +82,7 @@ M.config = function()
 				else
 					fallback()
 				end
-			end, { "i", "s" }),
+			end, { "i", "s","c" }),
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },

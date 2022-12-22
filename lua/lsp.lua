@@ -1,6 +1,6 @@
 -- Lspkind config
 local M = {}
-local M.on_attach = function(_, bufnr)
+function M.on_attach(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
@@ -36,113 +36,107 @@ local M.on_attach = function(_, bufnr)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
 end
+
 function M.setup()
-local servers = {
-	rust_analyzer = {},
-	gopls = {},
-	bashls = {},
-	jsonls = {},
-	yamlls = {},
-	terraformls = {},
-	sumneko_lua = {
-		Lua = {
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
-		},
-	},
-}
-require("neodev").setup()
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-require("mason-lspconfig").setup({
-	ensure_installed = vim.tbl_keys(servers),
-	automatic_installation = true,
-})
-require("mason-lspconfig").setup_handlers({
-	-- The first entry (without a key) will be the default handler
-	-- and will be called for each installed server that doesn't have
-	-- a dedicated handler.
-	function(server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = servers[server_name],
-		})
-	end,
-	-- Next, you can provide targeted overrides for specific servers.
-	["rust_analyzer"] = function()
-		require("rust-tools").setup({})
-	end,
-	["sumneko_lua"] = function()
-		require("lspconfig").sumneko_lua.setup({
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
+	local servers = {
+		rust_analyzer = {},
+		gopls = {},
+		bashls = {},
+		jsonls = {},
+		yamlls = {},
+		terraformls = {},
+		sumneko_lua = {
+			Lua = {
+				diagnostics = {
+					globals = { "vim" },
 				},
+				workspace = { checkThirdParty = false },
+				telemetry = { enable = false },
 			},
-		})
-	end,
-})
-require("fidget").setup()
+		},
+	}
+	require("neodev").setup()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+	require("mason").setup({
+		ui = {
+			icons = {
+				package_installed = "✓",
+				package_pending = "➜",
+				package_uninstalled = "✗",
+			},
+		},
+	})
+	require("mason-lspconfig").setup({
+		ensure_installed = vim.tbl_keys(servers),
+		automatic_installation = true,
+	})
+	require("mason-lspconfig").setup_handlers({
+		-- The first entry (without a key) will be the default handler
+		-- and will be called for each installed server that doesn't have
+		-- a dedicated handler.
+		function(server_name) -- default handler (optional)
+			require("lspconfig")[server_name].setup({
+				capabilities = capabilities,
+				on_attach = M.on_attach,
+				settings = servers[server_name],
+			})
+		end,
+		-- Next, you can provide targeted overrides for specific servers.
+		["rust_analyzer"] = function()
+			require("rust-tools").setup({})
+		end,
+	})
+	require("fidget").setup()
 
-require("lspkind").init({
-	mode = "symbol_text",
-	preset = "codicons",
-})
-require("plugincfg.comp").config()
-require("plugincfg.autopairs")
--- lsp signature related settings
-local sigConfig = {
-	bind = true, -- This is mandatory, otherwise border config won't get registered.
-	-- If you want to hook lspsaga or other signature handler, pls set to false
-	doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
-	floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
-	fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
-	hint_enable = false, -- virtual hint enable
-	hint_prefix = "🐼 ", -- Panda for parameter
-	hint_scheme = "String",
-	use_lspsaga = false, -- set to true if you want to use lspsaga popup
-	hi_parameter = "Underlined", -- how your parameter will be highlight
-	max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
-	max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-	transpancy = 100,
-	handler_opts = {
-		border = "single", -- double, single, shadow, none
-	},
-	extra_trigger_chars = { "(", "," }, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
-}
+	require("lspkind").init({
+		mode = "symbol_text",
+		preset = "codicons",
+	})
+	require("plugincfg.comp").config()
+	require("plugincfg.autopairs")
+	-- lsp signature related settings
+	local sigConfig = {
+		bind = true, -- This is mandatory, otherwise border config won't get registered.
+		-- If you want to hook lspsaga or other signature handler, pls set to false
+		doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+		floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+		fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
+		hint_enable = false, -- virtual hint enable
+		hint_prefix = "🐼 ", -- Panda for parameter
+		hint_scheme = "String",
+		use_lspsaga = false, -- set to true if you want to use lspsaga popup
+		hi_parameter = "Underlined", -- how your parameter will be highlight
+		max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
+		max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+		transpancy = 100,
+		handler_opts = {
+			border = "single", -- double, single, shadow, none
+		},
+		extra_trigger_chars = { "(", "," }, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
+	}
 
-require("lsp_signature").on_attach(sigConfig)
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = false,
-})
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	require("lsp_signature").on_attach(sigConfig)
+	vim.diagnostic.config({
+		virtual_text = false,
+		signs = true,
+		underline = true,
+		update_in_insert = false,
+		severity_sort = false,
+	})
+	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+	for type, icon in pairs(signs) do
+		local hl = "DiagnosticSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	end
+
+	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+		border = "rounded",
+	})
+
+	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+		border = "rounded",
+	})
 end
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
-})
-end
 return M

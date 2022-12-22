@@ -37,7 +37,6 @@ local on_attach = function(_, bufnr)
 	end, { desc = "Format current buffer with LSP" })
 end
 local servers = {
-	installed = {},
 	rust_analyzer = {},
 	gopls = {},
 	bashls = {},

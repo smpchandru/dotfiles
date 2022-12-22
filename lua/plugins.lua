@@ -91,7 +91,7 @@ function M.setup(bootstrap)
 				{ "f3fora/cmp-spell" },
 				{ "kdheepak/cmp-latex-symbols" },
 				{ "hrsh7th/cmp-cmdline" },
-				-- { "uga-rosa/cmp-dictionary" },
+				{ "uga-rosa/cmp-dictionary" },
 				{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 				{ "saadparwaiz1/cmp_luasnip" },
 			})

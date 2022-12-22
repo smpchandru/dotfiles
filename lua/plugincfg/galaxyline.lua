@@ -82,7 +82,7 @@ gls.left[1] = {
 		highlight = { colors.red, colors.bg },
 	},
 }
-print(vim.fn.getbufvar(0, "ts"))
+--print(vim.fn.getbufvar(0, "ts"))
 vim.fn.getbufvar(0, "ts")
 gls.right[2] = {
 	Space = {

@@ -169,7 +169,7 @@ local opts = {
 	-- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
 	server = {
 		-- on_attach is a callback called when the language server attachs to the buffer
-		on_attach = require("lsp.setup").on_attach,
+		on_attach = require("lsp").on_attach,
 		-- standalone = true,
 		settings = {
 			-- to enable rust-analyzer settings visit:

@@ -193,7 +193,7 @@ function M.setup(bootstrap)
 				disable = not O.plugin.matchup.enable,
 			})
 			use({
-				"sainnhe/gruvbox-material",
+				"smpchandru/gruvbox-material",
 			})
 			use({
 				"cespare/vim-go-templates",

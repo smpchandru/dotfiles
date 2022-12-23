@@ -153,22 +153,12 @@ function M.setup(bootstrap)
 				run = function()
 					require("nvim-treesitter.install").update({ with_sync = true })
 				end,
-			})
-			use({
-				"nvim-treesitter/playground",
-				after = "nvim-treesitter",
-			})
-			use({
-				"nvim-treesitter/nvim-treesitter-textobjects",
-				after = "nvim-treesitter",
-			})
-			use({
-				"romgrk/nvim-treesitter-context",
-				after = "nvim-treesitter",
-			})
-			use({
-				"p00f/nvim-ts-rainbow",
-				after = "nvim-treesitter",
+				requires = {
+					"nvim-treesitter/playground",
+					"nvim-treesitter/nvim-treesitter-textobjects",
+					"romgrk/nvim-treesitter-context",
+					"p00f/nvim-ts-rainbow",
+				},
 			})
 
 			use({

@@ -46,11 +46,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	group = "general",
 	command = "nnoremap <buffer><silent> <esc> :quit<cr>",
 })
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
-	pattern = "*",
-	group = "general",
-	command = ":lua require 'lsp_signature'.on_attach()",
-})
+-- vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
+-- 	pattern = "*",
+-- 	group = "general",
+-- 	command = ":lua require 'lsp_signature'.on_attach()",
+-- })
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = "*",
 	group = "general",

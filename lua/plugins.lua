@@ -94,7 +94,7 @@ function M.setup(bootstrap)
 				{ "saadparwaiz1/cmp_luasnip" },
 			})
 			use({ "uga-rosa/cmp-dictionary" })
-			use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+			-- use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
 			-- git related
 			use({
 				"lewis6991/gitsigns.nvim",
@@ -103,7 +103,6 @@ function M.setup(bootstrap)
 					"nvim-lua/plenary.nvim",
 				},
 				disable = not O.plugin.gitsigns.enable,
-				-- event = "BufRead",
 			})
 			use({
 				"rhysd/git-messenger.vim",

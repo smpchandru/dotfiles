@@ -28,13 +28,14 @@ function M.on_attach(_, bufnr)
 	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
 	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
 	nmap("<leader>wl", function()
-		--print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, "[W]orkspace [L]ist Folders")
 
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 		vim.lsp.buf.format()
 	end, { desc = "Format current buffer with LSP" })
+	-- lsp signature related settings
 end
 
 function M.setup()
@@ -95,28 +96,6 @@ function M.setup()
 	})
 	require("plugincfg.comp").config()
 	require("plugincfg.autopairs")
-	-- lsp signature related settings
-	local sigConfig = {
-		bind = true, -- This is mandatory, otherwise border config won't get registered.
-		-- If you want to hook lspsaga or other signature handler, pls set to false
-		doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
-		floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
-		fix_pos = false, -- set to true, the floating window will not auto-close until finish all parameters
-		hint_enable = false, -- virtual hint enable
-		hint_prefix = "🐼 ", -- Panda for parameter
-		hint_scheme = "String",
-		use_lspsaga = false, -- set to true if you want to use lspsaga popup
-		hi_parameter = "Underlined", -- how your parameter will be highlight
-		max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
-		max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-		transpancy = 100,
-		handler_opts = {
-			border = "single", -- double, single, shadow, none
-		},
-		extra_trigger_chars = { "(", "," }, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
-	}
-
-	require("lsp_signature").on_attach(sigConfig)
 	vim.diagnostic.config({
 		virtual_text = false,
 		signs = true,
@@ -136,6 +115,24 @@ function M.setup()
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 		border = "rounded",
+	})
+	require("lsp_signature").setup({
+		bind = true, -- This is mandatory, otherwise border config won't get registered.
+		doc_lines = 2, -- will show two lines of comment/doc(if there are more than two lines in doc, will be truncated);
+		floating_window = true, -- show hint in a floating window, set to false for virtual text only mode
+		fix_pos = true, -- set to true, the floating window will not auto-close until finish all parameters
+		hint_enable = false, -- virtual hint enable
+		hint_prefix = "🐼 ", -- Panda for parameter
+		hint_scheme = "String",
+		use_lspsaga = false, -- set to true if you want to use lspsaga popup
+		hi_parameter = "Underlined", -- how your parameter will be highlight,
+		max_height = 12, -- max height of signature floating_window, if content is more than max_height, you can scroll down
+		max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+		transpancy = 100,
+		handler_opts = {
+			border = "single", -- double, single, shadow, none
+		},
+		extra_trigger_chars = { "(", "," }, -- Array of extra characters that will trigger signature completion, e.g., {"(", ","}
 	})
 end
 

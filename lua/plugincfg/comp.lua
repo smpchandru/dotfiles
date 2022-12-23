@@ -82,7 +82,7 @@ M.config = function()
 				else
 					fallback()
 				end
-			end, { "i", "s","c" }),
+			end, { "i", "s", "c" }),
 		},
 		formatting = {
 			fields = { "kind", "abbr", "menu" },
@@ -116,7 +116,7 @@ M.config = function()
 			{ name = "latex_symbols" },
 			{ name = "buffer", keyword_length = 5 },
 			{ name = "dictionary", keyword_length = 4 },
-			{ name = "nvim_lsp_signature_help" },
+			-- { name = "nvim_lsp_signature_help" },
 		},
 	})
 	comp.setup.cmdline("/", {

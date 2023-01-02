@@ -26,7 +26,7 @@ map("n", "<C-p>", "<cmd>Files<CR>", { desc = "Search files", noremap = true, sil
 map("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
-map("n", "<C-/>", "gcc", { desc = "(n)Comment line", silent = true })
+map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
 if O.plugin.hop.enable == true then
 	map("n", "s", ":HopChar2<cr>", { desc = "Hop 2 chars", silent = true })
 	map("n", "S", ":HopWord<cr>", { desc = "Hop word", silent = true })
@@ -48,9 +48,9 @@ map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 map("n", "<leader>e", "<cmd>Ex<cr>")
 -- visual mode mapings
 -- Use tab to move visully selected text
-map("v", "<S-TAB>", "<gv", { desc = "Move visul text left", noremap = true, silent = true })
+map("v", "<S-TAB>", "<gv", { desc = "Move visual text left", noremap = true, silent = true })
 map("v", "<TAB>", ">gv", { desc = "Move visual text rigt ", noremap = true, silent = true })
-map("v", "<C-/>", "gb", { desc = "Comment block", silent = true })
+map("v", "<C-/>", "gb", { desc = "Comment block", remap = true, silent = true })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move text down", silent = true, noremap = true })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text up", silent = true, noremap = true })
 map("v", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })

@@ -35,6 +35,8 @@ opt.syntax = "on"
 opt.filetype = "on"
 opt.number = true
 opt.shell = "/bin/bash"
+opt.pumheight = 10
+opt.numberwidth  = 2
 vim.cmd("set nowritebackup")
 vim.cmd("set backspace=0")
 vim.cmd("set t_ut=")

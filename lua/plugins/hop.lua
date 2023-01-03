@@ -1,4 +1,7 @@
-local M = {}
+local M = {
+
+				"phaazon/hop.nvim",
+}
 M.config = function()
 	require("hop").setup({ keys = "etovxqpdygfblzhckisuran", term_seq_bias = 0.5 })
 end

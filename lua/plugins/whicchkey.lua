@@ -1,5 +1,8 @@
+local M = {
+				"folke/which-key.nvim",
+			}
+
 -- Config for whick key
-local M = {}
 M.config = function()
 	require("which-key").setup({
 		plugins = {

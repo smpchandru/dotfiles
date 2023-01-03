@@ -36,9 +36,9 @@ opt.filetype = "on"
 opt.number = true
 opt.shell = "/bin/bash"
 opt.pumheight = 10
-opt.numberwidth  = 2
-vim.cmd("set nowritebackup")
-vim.cmd("set backspace=0")
+opt.numberwidth = 2
+opt.backup = false
+opt.writebackup = true
 vim.cmd("set t_ut=")
 vim.cmd("set history=1000")
 vim.cmd("set diffopt+=iwhite")
@@ -85,6 +85,6 @@ let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1
 ]])
 vim.g.do_filetype_lua = 1
---vim.g.did_load_filetypes = 0
+vim.g.did_load_filetypes = 0
 --vim.cmd(":hi Keyword cterm=italic gui=italic")
 --vim.api.nvim_set_hl("Noraml", { bg = "none" })

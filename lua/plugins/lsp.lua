@@ -72,12 +72,12 @@ local M = {
 			})
 		end,
 	},
-	{
+	--[[ {
 		"j-hui/fidget.nvim",
 		config = function()
 			require("fidget").setup()
 		end,
-	},
+	}, ]]
 	{
 		"folke/neodev.nvim",
 		config = function()

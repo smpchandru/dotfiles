@@ -1,5 +1,5 @@
 local servers = {
-	rust_analyzer = {},
+	--rust_analyzer = {},
 	gopls = {},
 	bashls = {},
 	jsonls = {},
@@ -7,6 +7,9 @@ local servers = {
 	terraformls = {},
 	sumneko_lua = {
 		Lua = {
+			completion = {
+				callSnippet = "Replace",
+			},
 			diagnostics = {
 				globals = { "vim" },
 			},
@@ -29,6 +32,8 @@ local on_attach = function(_, bufnr)
 
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gr", vim.lsp.buf.references, "[G]oto [D]efinition")
+	nmap("]d", vim.diagnostic.goto_next, "Next diagnostics")
+	nmap("[d", vim.diagnostic.goto_prev, "Prevous Diagnostic")
 	--	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
@@ -72,17 +77,9 @@ local M = {
 			})
 		end,
 	},
-	--[[ {
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	}, ]]
 	{
 		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup()
-		end,
+		config = true,
 	},
 	{
 		"onsails/lspkind-nvim",
@@ -209,6 +206,7 @@ local M = {
 	{ "sumneko/lua-language-server", ft = "lua" },
 	{
 		"windwp/nvim-autopairs",
+		disable = true,
 		config = function()
 			local status_ok, npairs = pcall(require, "nvim-autopairs")
 			if not status_ok then
@@ -247,149 +245,7 @@ local M = {
 	{
 		"simrat39/rust-tools.nvim",
 		ft = "rust",
-		config = function()
-			require("rust-tools").setup({
-				tools = { -- rust-tools options
-					autoSetHints = true,
-					executor = require("rust-tools/executors").termopen,
-					on_initialized = nil,
-					inlay_hints = {
-						only_current_line = false,
-						only_current_line_autocmd = "CursorHold",
-						show_parameter_hints = true,
-
-						show_variable_name = true,
-						parameter_hints_prefix = "<- ",
-						other_hints_prefix = "=> ",
-						max_len_align = false,
-						max_len_align_padding = 1,
-						right_align = false,
-						right_align_padding = 7,
-						highlight = "Comment",
-					},
-					hover_actions = {
-						border = {
-							{ "╭", "FloatBorder" },
-							{ "─", "FloatBorder" },
-							{ "╮", "FloatBorder" },
-							{ "│", "FloatBorder" },
-							{ "╯", "FloatBorder" },
-							{ "─", "FloatBorder" },
-							{ "╰", "FloatBorder" },
-							{ "│", "FloatBorder" },
-						},
-						auto_focus = false,
-					},
-					crate_graph = {
-						backend = "x11",
-						output = nil,
-						full = true,
-						enabled_graphviz_backends = {
-							"bmp",
-							"cgimage",
-							"canon",
-							"dot",
-							"gv",
-							"xdot",
-							"xdot1.2",
-							"xdot1.4",
-							"eps",
-							"exr",
-							"fig",
-							"gd",
-							"gd2",
-							"gif",
-							"gtk",
-							"ico",
-							"cmap",
-							"ismap",
-							"imap",
-							"cmapx",
-							"imap_np",
-							"cmapx_np",
-							"jpg",
-							"jpeg",
-							"jpe",
-							"jp2",
-							"json",
-							"json0",
-							"dot_json",
-							"xdot_json",
-							"pdf",
-							"pic",
-							"pct",
-							"pict",
-							"plain",
-							"plain-ext",
-							"png",
-							"pov",
-							"ps",
-							"ps2",
-							"psd",
-							"sgi",
-							"svg",
-							"svgz",
-							"tga",
-							"tiff",
-							"tif",
-							"tk",
-							"vml",
-							"vmlz",
-							"wbmp",
-							"webp",
-							"xlib",
-							"x11",
-						},
-					},
-				},
-				server = {
-					on_attach = on_attach,
-					-- standalone = true,
-					settings = {
-						-- to enable rust-analyzer settings visit:
-						-- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-						["rust-analyzer"] = {
-							-- enable clippy on save
-							diagnostics = {
-								disabled = { "unresolved-proc-macro" },
-							},
-							cargo = {
-								loadOutDirsFromCheck = true,
-								buildScripts = {
-									enable = true,
-								},
-							},
-							procMacro = {
-								enable = true,
-								attributes = {
-									enable = true,
-								},
-							},
-							checkOnSave = {
-								-- command = "clippy"
-								allFeatures = true,
-								overrideCommand = {
-									"cargo",
-									"clippy",
-									"--workspace",
-									"--message-format=json",
-									"--all-targets",
-									"--all-features",
-								},
-							},
-						},
-					},
-				},
-				-- debugging stuff
-				dap = {
-					adapter = {
-						type = "executable",
-						command = "lldb-vscode",
-						name = "rt_lldb",
-					},
-				},
-			})
-		end,
+		config = true,
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",

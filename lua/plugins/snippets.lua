@@ -1,15 +1,14 @@
 local M = {
 	"L3MON4D3/LuaSnip",
 	dependencies = {
-		"rafamadriz/friendly-snippets"
-	}
+		"rafamadriz/friendly-snippets",
+	},
 }
 
-M.config =function ()
-
+M.config = function()
 	local ls = require("luasnip")
 	local types = require("luasnip.util.types")
-	ls.config.set_config {
+	ls.config.set_config({
 		history = true,
 		updateevents = "TextChanged,TextChangedI",
 		enable_autosnippets = true,
@@ -18,14 +17,13 @@ M.config =function ()
 				active = {
 					virt_text = {
 						{
-							"<-Current Choice"
-						}
-					}
-				}
-			}
-
-		}
-	}
+							"<-Current Choice",
+						},
+					},
+				},
+			},
+		},
+	})
 
 	vim.keymap.set({ "i", "s" }, "<c-k>", function()
 		if ls.expand_or_jumpable() then
@@ -44,7 +42,7 @@ M.config =function ()
 	end, { silent = true })
 	require("luasnip/loaders/from_vscode").load({
 		include = { "go", "python", "bash", "rust" },
-		paths = { "~/.local/share/nvim/site/pack/packer/start/friendly-snippets/" },
+		paths = { "~/.local/share/nvim/lazy/friendly-snippets/" },
 	})
 	require("snippets")
 end

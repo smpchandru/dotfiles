@@ -1,5 +1,4 @@
 -- Normal mode key bindgings
---
 local map = vim.keymap.set
 map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })

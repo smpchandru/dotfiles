@@ -15,36 +15,7 @@ M.config = function()
 		blue = "#51afef",
 		red = "#ec5f67",
 	}
-
-	-- local colors = {
-	-- 	blue = "#80a0ff",
-	-- 	cyan = "#79dac8",
-	-- 	black = "#080808",
-	-- 	white = "#c6c6c6",
-	-- 	red = "#ff5189",
-	-- 	violet = "#d183e8",
-	-- 	grey = "#303030",
-	-- }
-	--
-	-- local bubbles_theme = {
-	-- 	normal = {
-	-- 		a = { fg = colors.black, bg = colors.violet },
-	-- 		b = { fg = colors.white, bg = colors.grey },
-	-- 		c = { fg = colors.black, bg = colors.black },
-	-- 	},
-	--
-	-- 	insert = { a = { fg = colors.black, bg = colors.blue } },
-	-- 	visual = { a = { fg = colors.black, bg = colors.cyan } },
-	-- 	replace = { a = { fg = colors.black, bg = colors.red } },
-	--
-	-- 	inactive = {
-	-- 		a = { fg = colors.white, bg = colors.black },
-	-- 		b = { fg = colors.white, bg = colors.black },
-	-- 		c = { fg = colors.black, bg = colors.black },
-	-- 	},
-	-- }
 	local s = {}
-
 	require("lualine").setup({
 		options = {
 			theme = "gruvbox-material",
@@ -53,12 +24,26 @@ M.config = function()
 		},
 		sections = {
 			lualine_a = {
-				{ "mode", separator = { left = "" }, right_padding = 2 },
+				{
+					"mode",
+					separator = { left = "" },
+					right_padding = 2,
+				},
 			},
 			lualine_b = {
-				{ "branch" },
-				{ "filename" },
-				{ "diff" },
+				"branch",
+				"filename",
+				{
+					"diff",
+					on_click = function(_, _, _)
+						require("gitsigns").diffthis("~")
+					end,
+					symbols = {
+						added = " ",
+						modified = "柳",
+						removed = " ",
+					},
+				},
 			},
 			lualine_c = {
 				{
@@ -71,6 +56,8 @@ M.config = function()
 						color_info = { fg = colors.cyan },
 					},
 				},
+			},
+			lualine_x = {
 				{
 					function()
 						local msg = "No Active Lsp"
@@ -87,18 +74,19 @@ M.config = function()
 						end
 						return msg
 					end,
-					icon = " LSP:",
-					color = { fg = colors.orange, gui = "bold" },
+					icon = "",
+					color = { fg = colors.cyan },
 				},
 			},
-			lualine_x = {},
-			lualine_y = { "filetype", "progress" },
+			lualine_y = { "progress" },
 			lualine_z = {
 				{ "location", separator = { right = "" }, left_padding = 2 },
 			},
 		},
 		inactive_sections = {
-			lualine_a = { "filename" },
+			lualine_a = {
+				{ "filename" },
+			},
 			lualine_b = {},
 			lualine_c = {},
 			lualine_x = {},

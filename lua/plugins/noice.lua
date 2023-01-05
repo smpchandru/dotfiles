@@ -25,6 +25,9 @@ function M.config()
 	require("noice").setup({
 		debug = false,
 		lsp = {
+			signature = {
+				enabled = false,
+			},
 			override = {
 				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 				["vim.lsp.util.stylize_markdown"] = true,
@@ -50,7 +53,7 @@ function M.config()
 			},
 		},
 		presets = {
-			bottom_search = true,
+			bottom_search = false,
 			command_palette = true,
 			long_message_to_split = true,
 			inc_rename = true,

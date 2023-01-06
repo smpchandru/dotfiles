@@ -10,7 +10,6 @@ return {
 			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
-	{ "machakann/vim-highlightedyank" },
 	{ "smpchandru/gruvbox-material" },
 	{ "chaoren/vim-wordmotion" },
 	{ "ahmedkhalf/project.nvim" },

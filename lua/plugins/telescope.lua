@@ -25,20 +25,9 @@ M.config = function()
 			sorting_strategy = "descending",
 			layout_strategy = "vertical",
 			layout_config = {
-				-- prompt_position = "bottom",
-				--preview_width = 0.6,
-				-- preview_cutoff = 0,
 				horizontal = { mirror = false, width = 0.75 },
 				vertical = { mirror = false, width = 0.6, height = 0.5, prompt_position = "bottom" },
 			},
-			--[[ layout_config = {
-				width = 0.75,
-				prompt_position = "bottom",
-				preview_width = 0.60,
-				preview_cutoff = 120,
-				horizontal = {mirror = false},
-				vertical = {mirror = false}
-				}, ]]
 			file_sorter = require("telescope.sorters").get_fzy_sorter,
 			file_ignore_patterns = {},
 			generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
@@ -64,7 +53,7 @@ M.config = function()
 					-- To disable a keymap, put [map] = false
 					-- So, to not map "<C-n>", just put
 					-- ["<c-x>"] = false,
-					-- ["<esc>"] = actions.close,
+					["<esc>"] = actions.close,
 
 					-- Otherwise, just set the mapping to the function that you want it to be.
 					-- ["<C-i>"] = actions.select_horizontal,
@@ -114,24 +103,8 @@ M.config = function()
 					},
 				},
 			},
-			-- find_files = {
-			-- 	previewer = false,
-			-- 	theme = "dropdown",
-			-- },
 		},
 	})
-	--vim.cmd([[
-	--highlight TelescopeSelection      guifg=#D79921
-	--highlight TelescopeSelectionCaret guifg=#CC241D
-	--highlight TelescopeMultiSelection guifg=#928374
-	--highlight TelescopeNormal         guibg=#00000
-	--highlight TelescopeBorder         guifg=#ffdab9
-	--highlight TelescopePromptBorder   guifg=#ffffff
-	--highlight TelescopeResultsBorder  guifg=#ffffff
-	--highlight TelescopePreviewBorder  guifg=#ffffff
-	--highlight TelescopeMatching       guifg=blue
-	--highlight TelescopePromptPrefix   guifg=red
-	--]])
 	require("telescope").load_extension("media_files")
 	require("telescope").load_extension("projects")
 end

@@ -1,7 +1,7 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
 }
-M.config = function()
+function M.config()
 	local colors = {
 		bg = "#202328",
 		fg = "#bbc2cf",
@@ -15,8 +15,7 @@ M.config = function()
 		blue = "#51afef",
 		red = "#ec5f67",
 	}
-	local s = {}
-	require("lualine").setup({
+	local opt = {
 		options = {
 			theme = "gruvbox-material",
 			component_separators = "|",
@@ -44,6 +43,12 @@ M.config = function()
 					"filename",
 					color = {
 						fg = colors.magenta,
+					},
+					symbols = {
+						modified = "🞄", -- Text to show when the file is modified.
+						readonly = "🔒", -- Text to show when the file is non-modifiable or readonly.
+						unnamed = "[No Name]", -- Text to show for unnamed buffers.
+						newfile = "[New]", -- Text to show for newly created file before first write
 					},
 					on_click = function()
 						print(vim.fn.expand("%:p"))
@@ -117,6 +122,8 @@ M.config = function()
 		},
 		tabline = {},
 		extensions = {},
-	})
+	}
+	require("lualine").setup(opt)
 end
+
 return M

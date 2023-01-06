@@ -1,6 +1,6 @@
 local M = {
-				"folke/which-key.nvim",
-			}
+	"folke/which-key.nvim",
+}
 
 -- Config for whick key
 M.config = function()
@@ -67,6 +67,7 @@ M.config = function()
 		["f"] = "Format file",
 		["g"] = "Git(hydra)",
 		["s"] = "Toggle settings(hydra)",
+		t = { ":Telescope<CR>", "Telescope" },
 		l = {
 			name = "+lsp",
 			a = { "Lspsaga code_action", "Code Actions" },

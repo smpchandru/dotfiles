@@ -42,6 +42,7 @@ function M.config()
 					end,
 				},
 				view = "notify_send",
+				-- view = "mini",
 				opts = { stop = false },
 			},
 			{

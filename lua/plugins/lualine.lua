@@ -90,10 +90,13 @@ function M.config()
 						if next(clients) == nil then
 							return msg
 						end
+						local first = true
 						for _, client in ipairs(clients) do
-							local filetypes = client.config.filetypes
-							if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-								return client.name
+							if first then
+								msg = client.name
+								first = false
+							else
+								msg = msg .. "," .. client.name
 							end
 						end
 						return msg

@@ -31,8 +31,24 @@ M.config = function()
 				},
 			},
 			lualine_b = {
-				"branch",
-				"filename",
+				{
+					"branch",
+					color = {
+						fg = colors.violet,
+					},
+					on_click = function()
+						vim.cmd("Telescope git_branches")
+					end,
+				},
+				{
+					"filename",
+					color = {
+						fg = colors.magenta,
+					},
+					on_click = function()
+						print(vim.fn.expand("%:p"))
+					end,
+				},
 				{
 					"diff",
 					on_click = function(_, _, _)
@@ -55,6 +71,9 @@ M.config = function()
 						color_warn = { fg = colors.yellow },
 						color_info = { fg = colors.cyan },
 					},
+					on_click = function()
+						vim.diagnostic.setqflist()
+					end,
 				},
 			},
 			lualine_x = {
@@ -76,6 +95,9 @@ M.config = function()
 					end,
 					icon = "",
 					color = { fg = colors.cyan },
+					on_click = function()
+						vim.cmd("Mason")
+					end,
 				},
 			},
 			lualine_y = { "progress" },

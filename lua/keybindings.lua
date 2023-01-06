@@ -22,7 +22,7 @@ map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = tru
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
 map("n", "<C-p>", "<cmd>Files<CR>", { desc = "Search files", noremap = true, silent = true })
-map("n", "<leader>b", "<cmd>Buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
+map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
@@ -45,6 +45,7 @@ map("n", "\\dd", '"_dd', { desc = "Copy to system clipboard", silent = true, nor
 map("n", "\\p", '"+p', { desc = "Copy to system clipboard", silent = true, noremap = true })
 map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 map("n", "<leader>e", "<cmd>Ex<cr>")
+map("n", "<f1>", ":Telescope help_tags<CR>", { desc = "Vim help pages", noremap = true, silent = true })
 -- visual mode mapings
 -- Use tab to move visully selected text
 map("v", "<S-TAB>", "<gv", { desc = "Move visual text left", noremap = true, silent = true })

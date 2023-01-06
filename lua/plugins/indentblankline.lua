@@ -4,7 +4,16 @@ local M = {
 
 M.config = function()
 	vim.g.indent_blankline_buftype_exclude = { "terminal" }
-	vim.g.indent_blankline_filetype_exclude = { "help", "startify", "dashboard", "packer", "neogitstatus" }
+	vim.g.indent_blankline_filetype_exclude = {
+		"help",
+		"startify",
+		"dashboard",
+		"packer",
+		"neogitstatus",
+		"mason",
+		"lazy",
+		"Outline",
+	}
 	vim.g.indent_blankline_char = "▏"
 	vim.g.indent_blankline_context_char = "▏"
 	--vim.g.indent_blankline_char = "|"

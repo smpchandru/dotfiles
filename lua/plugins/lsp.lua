@@ -18,8 +18,8 @@ local servers = {
 		},
 	},
 }
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local caps = vim.lsp.protocol.make_client_capabilities()
+caps = require("cmp_nvim_lsp").default_capabilities(caps)
 local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
@@ -28,6 +28,7 @@ local on_attach = function(_, bufnr)
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
 	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+	nmap("<F2>", vim.lsp.buf.rename, "Rename")
 	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
@@ -95,6 +96,7 @@ local M = {
 		config = function()
 			require("mason").setup({
 				ui = {
+					border = "rounded",
 					icons = {
 						package_installed = "✓",
 						package_pending = "➜",
@@ -117,7 +119,7 @@ local M = {
 				-- a dedicated handler.
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
-						capabilities = capabilities,
+						capabilities = caps,
 						on_attach = on_attach,
 						settings = servers[server_name],
 					})
@@ -152,12 +154,12 @@ local M = {
 	{
 		"simrat39/symbols-outline.nvim",
 		config = function()
-			vim.g.symbols_outline = {
+			require("symbols-outline").setup({
 				highlight_hovered_item = false,
 				show_guides = false,
 				auto_preview = false,
 				position = "right",
-				width = 20,
+				width = 16,
 				show_numbers = false,
 				show_relative_numbers = false,
 				show_symbol_details = true,
@@ -200,7 +202,7 @@ local M = {
 					Operator = { icon = "+", hl = "TSOperator" },
 					TypeParameter = { icon = "𝙏", hl = "TSParameter" },
 				},
-			}
+			})
 		end,
 	},
 	{ "sumneko/lua-language-server", ft = "lua" },
@@ -254,6 +256,7 @@ local M = {
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.code_actions.gitsigns,
 				},
 			})
 		end,

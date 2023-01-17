@@ -63,3 +63,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 		vim.highlight.on_yank({ higroup = "IncSearch", timeout = 2000 })
 	end,
 })
+
+vim.cmd(
+	[[ autocmd User fugitive if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' | nnoremap <buffer> .. :edit %:h<CR> | endif ]]
+)

@@ -30,6 +30,7 @@ M.config = function()
 			position = "bottom", -- bottom, top
 			margin = { 1, 5, 1, 5 }, -- extra window margin [top, right, bottom, left]
 			padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+			winblend = 20,
 		},
 		layout = {
 			height = { min = 4, max = 15 }, -- min and max height of the columns
@@ -67,7 +68,16 @@ M.config = function()
 		["f"] = "Format file",
 		["g"] = "Git(hydra)",
 		["s"] = "Toggle settings(hydra)",
-		t = { ":Telescope<CR>", "Telescope" },
+		t = {
+			name = "Telescope",
+			t = { ":Telescope<CR>", "Telescope" },
+			h = { ":Telescope help_tags<CR>", "Help" },
+			f = { ":Telescope find_files<CR>", "files" },
+			k = { ":Telescope keymaps<CR>", "Keys" },
+			b = { ":Telescope buffers<CR>", "Buffers" },
+			g = { ":Telescope live_grep<CR>", "Grep" },
+			s = { ":Telescope lsp_document_symbols<CR>", "Symbols" },
+		},
 		l = {
 			name = "+lsp",
 			a = { "Lspsaga code_action", "Code Actions" },

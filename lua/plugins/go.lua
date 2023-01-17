@@ -40,7 +40,7 @@ return {
 		-- set to true: use gopls to format
 		-- false if you want to use other formatter tool(e.g. efm, nulls)
 		lsp_inlay_hints = {
-			enable = true,
+			enable = false,
 			-- Only show inlay hints for the current line
 			only_current_line = true,
 			-- Event which triggers a refersh of the inlay hints.

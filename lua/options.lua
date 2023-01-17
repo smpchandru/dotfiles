@@ -77,7 +77,7 @@ noremap <F11> :NeovideToggleFullscreen<CR>
 end
 vim.notify = require("notify")
 vim.o.ch = 0
-vim.o.scrolloff = 10
+vim.o.scrolloff = 3
 vim.cmd([[
 let g:gruvbox_material_enable_italic = 1
 let g:gruvbox_material_disable_italic_comment = 1

@@ -33,7 +33,7 @@ function M.config()
 				{
 					"branch",
 					color = {
-						fg = colors.violet,
+						fg = colors.yellow,
 					},
 					on_click = function()
 						vim.cmd("Telescope git_branches")
@@ -57,11 +57,12 @@ function M.config()
 				{
 					"diff",
 					on_click = function(_, _, _)
-						require("gitsigns").diffthis("~")
+						--require("gitsigns").diffthis("~")
+						vim.cmd("DiffviewFileHistory %")
 					end,
 					symbols = {
 						added = " ",
-						modified = "柳",
+						modified = "⊚ ",
 						removed = " ",
 					},
 				},
@@ -92,11 +93,14 @@ function M.config()
 						end
 						local first = true
 						for _, client in ipairs(clients) do
-							if first then
-								msg = client.name
-								first = false
-							else
-								msg = msg .. "," .. client.name
+							local filetypes = client.config.filetypes
+							if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+								if first then
+									msg = client.name
+									first = false
+								else
+									msg = msg .. "," .. client.name
+								end
 							end
 						end
 						return msg

@@ -55,7 +55,7 @@ function M.config()
 		},
 		presets = {
 			bottom_search = false,
-			command_palette = true,
+			command_palette = false,
 			long_message_to_split = true,
 			inc_rename = true,
 			cmdline_output_to_split = false,
@@ -71,7 +71,7 @@ function M.config()
 		},
 		format = {
 			level = {
-				icons = false,
+				icons = true,
 			},
 		},
 	})

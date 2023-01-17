@@ -1,3 +1,4 @@
+-- require('nvim-treesitter.ts_utils').get_vim_rangec
 vim.g.mapleader = " "
 require("default-config")
 dofile(CONFIG_PATH .. "/ch-config.lua")
@@ -43,7 +44,7 @@ require("lazy").setup("plugins", {
 	},
 	ui = {
 		-- a number <1 is a percentage., >1 is a fixed size
-		size = { width = 0.8, height = 0.8 },
+		size = { width = 0.6, height = 0.8 },
 		-- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
 		border = "rounded",
 		icons = {
@@ -137,14 +138,14 @@ require("lazy").setup("plugins", {
 			paths = {}, -- add any custom paths here that you want to indluce in the rtp
 			---@type string[] list any plugins you want to disable here
 			disabled_plugins = {
-				-- "gzip",
-				-- "matchit",
-				-- "matchparen",
-				-- "netrwPlugin",
-				-- "tarPlugin",
-				-- "tohtml",
-				-- "tutor",
-				-- "zipPlugin",
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
 			},
 		},
 	},

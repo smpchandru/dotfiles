@@ -5,19 +5,59 @@ local servers = {
 	jsonls = {},
 	yamlls = {},
 	terraformls = {},
+
 	sumneko_lua = {
-		Lua = {
-			completion = {
-				callSnippet = "Replace",
+		single_file_support = true,
+		settings = {
+			Lua = {
+
+				workspace = {
+					checkThirdParty = true,
+				},
+				completion = {
+					workspaceWord = true,
+					callSnippet = "Both",
+				},
+				misc = {
+					parameters = {
+						"--log-level=trace",
+					},
+				},
+				diagnostics = {
+					-- enable = false,
+					groupSeverity = {
+						strong = "Warning",
+						strict = "Warning",
+					},
+					groupFileStatus = {
+						["ambiguity"] = "Opened",
+						["await"] = "Opened",
+						["codestyle"] = "None",
+						["duplicate"] = "Opened",
+						["global"] = "Opened",
+						["luadoc"] = "Opened",
+						["redefined"] = "Opened",
+						["strict"] = "Opened",
+						["strong"] = "Opened",
+						["type-check"] = "Opened",
+						["unbalanced"] = "Opened",
+						["unused"] = "Opened",
+					},
+					unusedLocalExclude = { "_*" },
+				},
+				format = {
+					enable = false,
+					defaultConfig = {
+						indent_style = "space",
+						indent_size = "2",
+						continuation_indent_size = "2",
+					},
+				},
 			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = { checkThirdParty = false },
-			telemetry = { enable = false },
 		},
 	},
 }
+-- vim.api.nvim_buf_set_lines
 local caps = vim.lsp.protocol.make_client_capabilities()
 caps = require("cmp_nvim_lsp").default_capabilities(caps)
 local on_attach = function(_, bufnr)
@@ -54,6 +94,32 @@ local on_attach = function(_, bufnr)
 end
 local M = {
 	{
+		enable = false,
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({
+				library = {
+					enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
+					-- these settings will be used for your Neovim config directory
+					runtime = true, -- runtime path
+					types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
+					-- plugins = true, -- installed opt or start plugins in packpath
+					-- you can also specify the list of plugins to make available as a workspace library
+					plugins = { "nvim-treesitter" },
+				},
+				setup_jsonls = true, -- configures jsonls to provide completion for project specific .luarc.json files
+				-- for your Neovim config directory, the config.library settings will be used as is
+				-- for plugin directories (root_dirs having a /lua directory), config.library.plugins will be disabled
+				-- for any other directory, config.library.enabled will be set to false
+				override = function(root_dir, options) end,
+				-- With lspconfig, Neodev will automatically setup your lua-language-server
+				-- If you disable this, then you have to set {before_init=require("neodev.lsp").before_init}
+				-- in your lsp start options
+				lspconfig = true,
+			})
+		end,
+	},
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			vim.diagnostic.config({
@@ -77,10 +143,6 @@ local M = {
 				border = "rounded",
 			})
 		end,
-	},
-	{
-		"folke/neodev.nvim",
-		config = true,
 	},
 	{
 		"onsails/lspkind-nvim",
@@ -124,7 +186,6 @@ local M = {
 						settings = servers[server_name],
 					})
 				end,
-				-- Next, you can provide targeted overrides for specific servers.
 			})
 		end,
 	},

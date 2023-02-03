@@ -24,7 +24,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 O = {
-	colorscheme = "gruvbox-material",
+	colorscheme = "everforest",
 	leader_key = " ",
 	hidden_files = true,
 	wrap_lines = false,

@@ -1,6 +1,7 @@
 local M = {
 
 	"anuvyklack/hydra.nvim",
+	event = "VeryLazy",
 	dependencies = "anuvyklack/keymap-layer.nvim",
 	config = function()
 		local Hydra = require("hydra")

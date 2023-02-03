@@ -29,7 +29,7 @@ vim.o.guifont = "JetBrainsMono Nerd Font Mono:h20"
 -- opt.guifont = "JetBrains Mono Regular:h30"
 opt.smarttab = true
 opt.autoindent = true
-opt.laststatus = 2
+opt.laststatus = 3
 opt.background = "dark"
 opt.syntax = "on"
 opt.filetype = "on"
@@ -49,8 +49,8 @@ vim.cmd("set ts=4") -- Insert 2 spaces for a tab
 vim.cmd("set nocompatible")
 vim.cmd("set relativenumber")
 opt.swapfile = false
-vim.o.pumblend = 5
-vim.o.winblend = 5
+vim.o.pumblend = 10
+vim.o.winblend = 10
 vim.fn.has("")
 if vim.fn.has("termguicolors") then
 	opt.termguicolors = true

@@ -1,6 +1,20 @@
 local servers = {
-	--rust_analyzer = {},
-	gopls = {},
+	rust_analyzer = {},
+	gopls = {
+		settings = {
+			gopls = {
+				hints = {
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					functionTypeParameters = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
+			},
+		},
+	},
 	bashls = {},
 	jsonls = {},
 	yamlls = {},
@@ -94,8 +108,14 @@ local on_attach = function(_, bufnr)
 end
 local M = {
 	{
+		"simrat39/rust-tools.nvim",
+		ft = "rust",
+		event = "VeryLazy",
+	},
+	{
 		enable = false,
 		"folke/neodev.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("neodev").setup({
 				library = {
@@ -121,6 +141,7 @@ local M = {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = "VeryLazy",
 		config = function()
 			vim.diagnostic.config({
 				virtual_text = false,
@@ -146,6 +167,7 @@ local M = {
 	},
 	{
 		"onsails/lspkind-nvim",
+		event = "VeryLazy",
 		config = function()
 			require("lspkind").init({
 				mode = "symbol_text",
@@ -155,6 +177,7 @@ local M = {
 	},
 	{
 		"williamboman/mason.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("mason").setup({
 				ui = {
@@ -170,6 +193,7 @@ local M = {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = vim.tbl_keys(servers),
@@ -186,11 +210,19 @@ local M = {
 						settings = servers[server_name],
 					})
 				end,
+				["rust_analyzer"] = function()
+					require("rust-tools").setup({
+						server = {
+							on_attach = on_attach,
+						},
+					})
+				end,
 			})
 		end,
 	},
 	{
 		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("lsp_signature").setup({
 				bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -214,6 +246,7 @@ local M = {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("symbols-outline").setup({
 				highlight_hovered_item = false,
@@ -269,6 +302,7 @@ local M = {
 	{ "sumneko/lua-language-server", ft = "lua" },
 	{
 		"windwp/nvim-autopairs",
+		event = "VeryLazy",
 		disable = true,
 		config = function()
 			local status_ok, npairs = pcall(require, "nvim-autopairs")
@@ -306,12 +340,8 @@ local M = {
 		end,
 	},
 	{
-		"simrat39/rust-tools.nvim",
-		ft = "rust",
-		config = true,
-	},
-	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "VeryLazy",
 		config = function()
 			local null_ls = require("null-ls")
 			null_ls.setup({

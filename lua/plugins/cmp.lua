@@ -4,6 +4,7 @@ local has_words_before = function()
 end
 local M = {
 	"hrsh7th/nvim-cmp",
+	event = "VeryLazy",
 	dependencies = {
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-buffer" },

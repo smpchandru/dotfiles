@@ -1,5 +1,6 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
+	event = "VeryLazy",
 }
 function M.config()
 	local colors = {
@@ -20,6 +21,7 @@ function M.config()
 			theme = "gruvbox-material",
 			component_separators = "|",
 			section_separators = { left = "", right = "" },
+			globalstatus = true,
 		},
 		sections = {
 			lualine_a = {

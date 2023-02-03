@@ -56,6 +56,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	group = "general",
 	command = "silent! lua require('go.format').goimport()",
 })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = "*",
+	group = "general",
+	command = 'normal `"',
+})
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	pattern = "*",
 	group = "general",

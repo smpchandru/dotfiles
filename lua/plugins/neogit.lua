@@ -1,11 +1,6 @@
 local M = {
 	"TimUntersberger/neogit",
-	dependencies = {
-		{
-			"sindrets/diffview.nvim",
-			cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-		},
-	},
+	event = "VeryLazy",
 	config = {
 		disable_signs = false,
 		disable_context_highlighting = false,

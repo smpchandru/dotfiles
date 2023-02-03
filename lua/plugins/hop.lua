@@ -1,8 +1,10 @@
 local M = {
-
-				"phaazon/hop.nvim",
+	{
+		"phaazon/hop.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran", term_seq_bias = 0.5 })
+		end,
+	},
 }
-M.config = function()
-	require("hop").setup({ keys = "etovxqpdygfblzhckisuran", term_seq_bias = 0.5 })
-end
 return M

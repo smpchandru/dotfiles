@@ -193,7 +193,6 @@ local M = {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = "VeryLazy",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = vim.tbl_keys(servers),
@@ -299,7 +298,7 @@ local M = {
 			})
 		end,
 	},
-	{ "sumneko/lua-language-server", ft = "lua" },
+	{ "sumneko/lua-language-server", tag = "3.6.9", ft = "lua", event = "VeryLazy" },
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",

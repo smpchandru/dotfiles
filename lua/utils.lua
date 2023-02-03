@@ -33,15 +33,15 @@ function M.ToggleMouse()
 end
 
 --Retain the cursor position across the vim sessions
-function M.ResCur()
-	if vim.fn.line("'\"") <= vim.fn.line("$") then
-		vim.cmd([[ normal! g`" ]])
-		return 1
-	end
-end
+-- function M.ResCur()
+-- 	if vim.fn.line("'\"") <= vim.fn.line("$") then
+-- 		vim.cmd([[ normal! g`" ]])
+-- 		return 1
+-- 	end
+-- end
 
 --function to search in range
-function M.RangeSearch(direction)
+--[[ function M.RangeSearch(direction)
 	vim.fn.inputsave()
 	vim.g.srchstr = vim.fn.input(direction)
 	vim.fn.inputrestore()
@@ -56,7 +56,7 @@ function M.RangeSearch(direction)
 	else
 		vim.g.srchstr = ""
 	end
-end
+end ]]
 
 local opts = { noremap = true, silent = true }
 M.map = function(mode, key, action, opt)

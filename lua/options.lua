@@ -1,42 +1,37 @@
-local opt = vim.opt
-opt.hidden = true -- Required to keep multiple buffers open multiple buffers
-vim.wo.wrap = false -- Display long lines as just one line
-opt.fileencoding = "utf-8" -- The encoding written to file
--- opt.mouse = "" -- Enable your mouse
-opt.splitbelow = true -- Horizontal splits will automatically be below
-opt.termguicolors = true -- set term giu colors most terminals support this
-opt.splitright = true -- Vertical splits will automatically be to the right
-opt.conceallevel = 0 -- So that I can see `` in markdown files
-vim.bo.expandtab = false -- Converts tabs to spaces
-vim.bo.smartindent = true -- Makes indenting smart
-vim.wo.number = true -- set numbered lines
-vim.wo.cursorline = false -- Enable highlighting of the current line
---opt.showtabline = 1 -- Always show tabs
-opt.showmode = false -- We don't need to see things like -- INSERT -- anymore
-opt.backup = false -- This is recommended by coc
-opt.writebackup = false -- This is recommended by coc
-vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
-opt.updatetime = 50 -- Faster completion
-opt.timeoutlen = 1000 -- By default timeoutlen is 1000 ms
-opt.shiftwidth = 4
-opt.tabstop = 4
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h20"
--- vim.o.guifont = "JetBrains Mono Regular"
--- vim.o.guifont = "JetBrains Mono Regular:h24"
--- opt.guifont = "DejaVu SansMono for PowerlineBook:h20"
--- opt.guifont = "Droid SansMono for Powerline:h20"
--- opt.guifont = "Source Code Pro for Powerline:h14"
--- opt.guifont = "JetBrains Mono Regular:h30"
-opt.smarttab = true
-opt.autoindent = true
-opt.laststatus = 3
-opt.background = "dark"
-opt.syntax = "on"
-opt.filetype = "on"
-opt.number = true
-opt.shell = "/bin/bash"
-opt.pumheight = 10
-opt.numberwidth = 2
+local opt = {
+	hidden = true, -- Required to keep multiple buffers open multiple buffers
+	fileencoding = "utf-8", -- The encoding written to file
+	splitbelow = true, -- Horizontal splits will automatically be below
+	splitright = true, -- Vertical splits will automatically be to the right
+	conceallevel = 0, -- So that I can see `` in markdown files
+	showmode = false, -- We don't need to see things like -- INSERT -- anymore
+	backup = false, -- This is recommended by coc
+	writebackup = false, -- This is recommended by coc
+	updatetime = 50, -- Faster completion
+	timeoutlen = 500, -- By default timeoutlen is 1000 ms
+	shiftwidth = 4,
+	tabstop = 4,
+	smarttab = true,
+	autoindent = true,
+	laststatus = 3,
+	background = "dark",
+	syntax = "on",
+	filetype = "on",
+	number = true,
+	shell = "/bin/bash",
+	pumheight = 10,
+	swapfile = false,
+	numberwidth = 2,
+	completeopt = { "menuone", "noinsert", "noselect" },
+	termguicolors = true,
+	showtabline = 2,
+	listchars = { eol = "↲", tab = "▸ ", trail = "·" },
+	foldcolumn = "auto",
+	mouse = "",
+}
+for k, v in pairs(opt) do
+	vim.opt[k] = v
+end
 vim.cmd("set t_ut=")
 vim.cmd("set history=1000")
 vim.cmd("set diffopt+=iwhite")
@@ -48,13 +43,9 @@ vim.cmd("set whichwrap+=<,>,[,],h,l") -- move to next line with theses keys
 vim.cmd("set ts=4") -- Insert 2 spaces for a tab
 vim.cmd("set nocompatible")
 vim.cmd("set relativenumber")
-opt.swapfile = false
 vim.o.pumblend = 10
 vim.o.winblend = 10
 vim.fn.has("")
-if vim.fn.has("termguicolors") then
-	opt.termguicolors = true
-end
 vim.cmd("set formatoptions-=cro")
 vim.g.mapleader = O.leader_key
 vim.g.maplocalleader = ";"
@@ -65,8 +56,6 @@ vim.cmd("highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15")
 vim.g.highlightedyank_highlight_duration = 10000
 vim.g.gruvbox_material_background = "dark"
 vim.cmd("colorscheme " .. O.colorscheme)
-vim.opt.listchars:append("eol:↴")
-vim.opt.mouse = ""
 if vim.g.neovide then
 	vim.cmd("set mouse=a")
 	vim.cmd([[
@@ -75,6 +64,7 @@ command -nargs=0 NeovideToggleFullscreen :let g:neovide_fullscreen = !g:neovide_
 noremap <F11> :NeovideToggleFullscreen<CR>
 ]])
 end
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 vim.notify = require("notify")
 vim.o.ch = 0
 vim.o.scrolloff = 3
@@ -84,5 +74,12 @@ let g:gruvbox_material_disable_italic_comment = 1
 ]])
 vim.g.do_filetype_lua = 1
 vim.g.did_load_filetypes = 0
+vim.bo.expandtab = false -- Converts tabs to spaces
+vim.bo.smartindent = true -- Makes indenting smart
+vim.wo.number = true -- set numbered lines
+vim.wo.cursorline = false -- Enable highlighting of the current line
+vim.wo.wrap = false -- Display long lines as just one line
 --vim.cmd(":hi Keyword cterm=italic gui=italic")
 --vim.api.nvim_set_hl("Noraml", { bg = "none" })
+vim.o.guifont = "JetBrainsMono Nerd Font Mono:h20"
+vim.wo.signcolumn = "no" -- Always show the signcolumn, otherwise it would shift the text each time

@@ -1,8 +1,8 @@
 return {
 	--"tpope/vim-surround",
-	{ "tpope/vim-repeat", event = "VeryLazy" },
+	{ "tpope/vim-repeat", event = "InsertEnter" },
 	{ "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
-	{ "nvim-lua/popup.nvim", event = "VeryLazy" },
+	{ "nvim-lua/popup.nvim", event = "VimEnter" },
 	{ "rcarriga/nvim-notify", event = "VeryLazy" },
 	{
 		"andymass/vim-matchup",
@@ -22,7 +22,7 @@ return {
 		"tpope/vim-unimpaired",
 		event = "VeryLazy",
 	},
-	{ "smpchandru/gruvbox-material" },
+	{ "smpmenasinahal/gruvbox-material" },
 	{ "sainnhe/everforest" },
 	{ "chaoren/vim-wordmotion", event = "VeryLazy" },
 	{ "rhysd/git-messenger.vim", event = "VeryLazy" },
@@ -32,14 +32,13 @@ return {
 	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 	{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" }, -- optional dependency
 	{ "rhysd/open-pdf.vim", event = "VeryLazy" },
-	{ "folke/trouble.nvim", config = true, event = "VeryLazy" },
+	{ "folke/trouble.nvim", config = true, event = "VimEnter" },
 	{
 		"junegunn/fzf",
-		event = "VeryLazy",
-	},
-	{
-		"junegunn/fzf.vim",
-		event = "VeryLazy",
+		event = "BufEnter",
+		dependencies = {
+			"junegunn/fzf.vim",
+		},
 	},
 	{
 		enabled = false,

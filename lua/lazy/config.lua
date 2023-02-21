@@ -9,6 +9,7 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
 	root = vim.fn.stdpath("data") .. "/lazy", -- directory where plugins will be installed

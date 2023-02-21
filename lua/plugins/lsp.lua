@@ -19,8 +19,7 @@ local servers = {
 	jsonls = {},
 	yamlls = {},
 	terraformls = {},
-
-	sumneko_lua = {
+	lua_ls = {
 		single_file_support = true,
 		settings = {
 			Lua = {
@@ -73,6 +72,10 @@ local servers = {
 }
 -- vim.api.nvim_buf_set_lines
 local caps = vim.lsp.protocol.make_client_capabilities()
+caps.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
 caps = require("cmp_nvim_lsp").default_capabilities(caps)
 local on_attach = function(_, bufnr)
 	local nmap = function(keys, func, desc)
@@ -90,7 +93,7 @@ local on_attach = function(_, bufnr)
 	nmap("]d", vim.diagnostic.goto_next, "Next diagnostics")
 	nmap("[d", vim.diagnostic.goto_prev, "Prevous Diagnostic")
 	--	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 	--	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
@@ -193,6 +196,7 @@ local M = {
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("mason-lspconfig").setup({
 				ensure_installed = vim.tbl_keys(servers),

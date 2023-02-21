@@ -1,5 +1,4 @@
 local M = {
-
 	"lewis6991/gitsigns.nvim",
 	event = "BufReadPre",
 	dependencies = { "nvim-lua/plenary.nvim" },
@@ -7,6 +6,7 @@ local M = {
 M.config = function()
 	require("gitsigns").setup({
 		signs = {
+			--add = { hl = "GitSignsAdd", text = "┃", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 			add = { hl = "GitSignsAdd", text = "┃", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 			change = { hl = "GitSignsChange", text = "┃", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
 			delete = { hl = "GitSignsDelete", text = "┃", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
@@ -24,7 +24,7 @@ M.config = function()
 			},
 		},
 		numhl = true,
-		linehl = false,
+		linehl = true,
 		keymaps = {
 			-- Default keymap options
 			noremap = true,

@@ -41,8 +41,8 @@ function M.config()
 						return not focused
 					end,
 				},
-				view = "notify_send",
-				-- view = "mini",
+				-- view = "notify_send",
+				view = "mini",
 				opts = { stop = false },
 			},
 			{

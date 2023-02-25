@@ -1,7 +1,7 @@
 local M = {
 	"TimUntersberger/neogit",
 	event = "VeryLazy",
-	config = {
+	opts = {
 		disable_signs = false,
 		disable_context_highlighting = false,
 		disable_commit_confirmation = true,

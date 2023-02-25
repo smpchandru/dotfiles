@@ -1,11 +1,11 @@
 return {
 	"ray-x/go.nvim",
 	ft = "go",
-	event = 'VeryLazy',
+	event = "VeryLazy",
 	dependencies = {
 		"ray-x/guihua.lua",
 	},
-	config = {
+	opts = {
 		disable_defaults = false, -- true|false when true set false to all boolean settings and replace all table
 		go = "go", -- go command, can be go[default] or go1.18beta1
 		goimport = "gopls", -- goimport command, can be gopls[default] or goimport

@@ -46,9 +46,7 @@ vim.cmd("set relativenumber")
 vim.o.pumblend = 10
 vim.o.winblend = 10
 vim.fn.has("")
-vim.cmd("set formatoptions-=cro")
-vim.g.mapleader = O.leader_key
-vim.g.maplocalleader = ";"
+vim.cmd("set formatoptions-=cro") vim.g.mapleader = O.leader_key vim.g.maplocalleader = ";"
 vim.cmd("highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15")
 vim.cmd("highlight ColorColumn ctermbg=1")
 vim.cmd("hi Search cterm=NONE ctermfg=grey ctermbg=blue")
@@ -65,7 +63,7 @@ noremap <F11> :NeovideToggleFullscreen<CR>
 ]])
 end
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.notify = require("notify")
+--vim.notify = require("notify")
 vim.o.ch = 0
 vim.o.scrolloff = 3
 vim.cmd([[

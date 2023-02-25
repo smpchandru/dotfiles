@@ -3,7 +3,7 @@ return {
 	{ "tpope/vim-repeat", event = "InsertEnter" },
 	{ "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
 	{ "nvim-lua/popup.nvim", event = "VimEnter" },
-	{ "rcarriga/nvim-notify", event = "VeryLazy" },
+	{ "rcarriga/nvim-notify", event = "VeryLazy", enabled = false },
 	{
 		"andymass/vim-matchup",
 		event = "VeryLazy",
@@ -22,7 +22,7 @@ return {
 		"tpope/vim-unimpaired",
 		event = "VeryLazy",
 	},
-	{ "smpmenasinahal/gruvbox-material" },
+	{ "smpchandru/gruvbox-material" },
 	{ "sainnhe/everforest" },
 	{ "chaoren/vim-wordmotion", event = "VeryLazy" },
 	{ "rhysd/git-messenger.vim", event = "VeryLazy" },

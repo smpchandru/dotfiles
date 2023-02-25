@@ -5,6 +5,7 @@ local M = {
 }
 M.config = function()
 	require("gitsigns").setup({
+
 		signs = {
 			--add = { hl = "GitSignsAdd", text = "┃", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 			add = { hl = "GitSignsAdd", text = "┃", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
@@ -24,7 +25,7 @@ M.config = function()
 			},
 		},
 		numhl = true,
-		linehl = true,
+		linehl = false,
 		keymaps = {
 			-- Default keymap options
 			noremap = true,

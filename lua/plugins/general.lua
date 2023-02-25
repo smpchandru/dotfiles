@@ -23,6 +23,7 @@ return {
 		event = "VeryLazy",
 	},
 	{ "smpchandru/gruvbox-material" },
+	{ "folke/tokyonight.nvim" },
 	{ "sainnhe/everforest" },
 	{ "chaoren/vim-wordmotion", event = "VeryLazy" },
 	{ "rhysd/git-messenger.vim", event = "VeryLazy" },

@@ -1,8 +1,10 @@
 local M = {
 	"echasnovski/mini.nvim",
-	event = "VeryLazy",
 	config = function()
+		require("mini.bracketed").setup()
 		require("mini.surround").setup()
+		-- require("mini.animate").setup()
 	end,
+	event = "VeryLazy",
 }
 return M

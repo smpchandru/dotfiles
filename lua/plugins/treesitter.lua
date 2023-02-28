@@ -5,7 +5,7 @@ local M = {
 		require("nvim-treesitter.install").update({ with_sync = true })
 	end,
 	dependencies = {
-		{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+		{ "nvim-treesitter/playground",     cmd = "TSPlaygroundToggle" },
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		{ "romgrk/nvim-treesitter-context", event = "BufReadPre" },
 		"p00f/nvim-ts-rainbow",
@@ -68,7 +68,9 @@ M.config = function()
 					["af"] = "@function.outer",
 					["if"] = "@function.inner",
 					["al"] = "@loop.outer",
+					["ai"] = "@loop.inner",
 					["ac"] = "@conditional.outer",
+					["ic"] = "@conditional.inner",
 				},
 				selection_modes = {
 					["@parameter.outer"] = "v", -- charwise

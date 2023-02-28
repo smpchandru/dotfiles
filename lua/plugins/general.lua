@@ -21,6 +21,7 @@ return {
 	{
 		"tpope/vim-unimpaired",
 		event = "VeryLazy",
+		enabled = false,
 	},
 	{ "smpchandru/gruvbox-material" },
 	{ "folke/tokyonight.nvim" },
@@ -28,7 +29,6 @@ return {
 	{ "chaoren/vim-wordmotion", event = "VeryLazy" },
 	{ "rhysd/git-messenger.vim", event = "VeryLazy" },
 	{ "kevinhwang91/nvim-bqf", event = "VeryLazy" },
-	{ "chaoren/vim-wordmotion", event = "VeryLazy" },
 	{ "ThePrimeagen/vim-be-good", event = "VeryLazy" },
 	{ "mg979/vim-visual-multi", event = "VeryLazy" },
 	{ "nvim-tree/nvim-web-devicons", event = "VeryLazy" }, -- optional dependency
@@ -40,20 +40,5 @@ return {
 		dependencies = {
 			"junegunn/fzf.vim",
 		},
-	},
-	{
-		enabled = false,
-		"echasnovski/mini.animate",
-		event = "VeryLazy",
-		config = function()
-			require("mini.animate").setup()
-		end,
-	},
-	{
-		"echasnovski/mini.nvim",
-		config = function()
-			require("mini.surround").setup()
-		end,
-		event = "VeryLazy",
 	},
 }

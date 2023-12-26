@@ -42,13 +42,8 @@ M.config = function()
 	})
 
 	-- Set leader
-	if O.leader_key == " " or O.leader_key == "space" then
-		vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-		vim.g.mapleader = " "
-	else
-		vim.api.nvim_set_keymap("n", O.leader_key, "<NOP>", { noremap = true, silent = true })
-		vim.g.mapleader = O.leader_key
-	end
+	vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+	vim.g.mapleader = " "
 
 	local opts = {
 		mode = "n", -- NORMAL mode
@@ -65,9 +60,10 @@ M.config = function()
 		["v"] = "DiagramMode",
 		["w"] = "Workspase/Projects",
 		["q"] = "Diagnostic list",
-		["f"] = "Format file",
 		["g"] = "Git(hydra)",
 		["s"] = "Toggle settings(hydra)",
+		["h"] = "Git hunk",
+		["f"] = "File system",
 		t = {
 			name = "Telescope",
 			t = { ":Telescope<CR>", "Telescope" },
@@ -80,21 +76,8 @@ M.config = function()
 		},
 		l = {
 			name = "+lsp",
-			a = { "Lspsaga code_action", "Code Actions" },
-			r = { "lua vim.lsp.buf.references()", "References" },
-			f = { "lua vim.lsp.buf.formatting_sync()", "Formating" },
-		},
-		p = {
-			name = "Packer",
-			i = { "<cmd>PackerInstall<cr>", "Install" },
-			c = { "<cmd>PackerCompile<cr>", "Compile" },
-			s = { "<cmd>PackerSync<cr>", "Sync" },
-			u = { "<cmd>PackerUpdate<cr>", "Update" },
-		},
-		S = {
-			name = "Session",
-			s = { "<cmd>SessionSave<cr>", "Save Session" },
-			l = { "<cmd>SessionLoad<cr>", "Load Session" },
+			a = { "vim.lsp.buf.code_action", "Code Actions" },
+			r = { "vim.lsp.buf.references", "References" },
 		},
 		j = {
 			name = "which_key_ignore",

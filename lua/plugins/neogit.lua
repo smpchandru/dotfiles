@@ -1,7 +1,8 @@
 local M = {
-	"TimUntersberger/neogit",
+	"NeogitOrg/neogit",
 	event = "VeryLazy",
-	opts = {
+	config = true,
+	--[[ opts = {
 		disable_signs = false,
 		disable_context_highlighting = false,
 		disable_commit_confirmation = true,
@@ -23,6 +24,6 @@ local M = {
 				["B"] = "BranchPopup",
 			},
 		},
-	},
+	}, ]]
 }
 return M

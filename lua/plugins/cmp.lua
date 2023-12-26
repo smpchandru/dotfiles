@@ -40,14 +40,16 @@ local M = {
 				end,
 			},
 			window = {
-				documentation = {
+				completion = comp.config.window.bordered(),
+				documentation = comp.config.window.bordered(),
+				--[[ documentation = {
 					border = "single",
 					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
 				},
 				completion = {
 					border = "single",
 					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-				},
+				}, ]]
 			},
 			confirmation = {
 				default_behavior = comp.ConfirmBehavior.Replace,
@@ -116,7 +118,7 @@ local M = {
 			},
 			experimental = {
 				native_menu = false,
-				ghost_text = true,
+				ghost_text = { enabled = true },
 			},
 			sources = {
 				{ name = "nvim_lua" },

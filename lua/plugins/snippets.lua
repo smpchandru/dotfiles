@@ -42,9 +42,10 @@ M.config = function()
 		end
 	end, { silent = true })
 	require("luasnip/loaders/from_vscode").load({
-		include = { "go", "python", "bash", "rust" },
+		include = { "go", "python", "bash", "rust", "html", "css", "javascript", "typescriptreact" },
 		paths = { "~/.local/share/nvim/lazy/friendly-snippets/" },
 	})
-	require("snippets")
+	require("luasnip").filetype_extend("typescript", { "javascript" })
+	-- require("mysnippets")
 end
 return M

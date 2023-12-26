@@ -3,9 +3,8 @@
 local map = vim.keymap.set
 map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })
-if O.plugin.symbol_outline.enable == true then
-	map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
-end
+map("n", "<Leader>f", ":lua MiniFiles.open()<CR>", { desc = "File System edit", noremap = true, silent = true })
+map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
 -- resize windows
 map("n", "<M-j>", ":resize -2<CR>", { desc = "Resize window down", noremap = true, silent = true })
 map("n", "<M-k>", ":resize +2<CR>", { desc = "Resize window up", noremap = true, silent = true })
@@ -22,15 +21,13 @@ map("n", "<C-y>", ":e $MYVIMRC<CR>", { desc = "Config", noremap = true, silent =
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
-map("n", "<C-p>", "<cmd>Files<CR>", { desc = "Search files", noremap = true, silent = true })
-map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
+map("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Search files", noremap = true, silent = true })
+map("n", "<leader>b", "<cmd>Pick buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
-if O.plugin.hop.enable == true then
-	map("n", "s", ":HopChar2<cr>", { desc = "Hop 2 chars", silent = true })
-	map("n", "S", ":HopWord<cr>", { desc = "Hop word", silent = true })
-end
+map("n", "s", ":HopChar2<cr>", { desc = "Hop 2 chars", silent = true })
+map("n", "S", ":HopWord<cr>", { desc = "Hop word", silent = true })
 map("n", "<C-RightMouse>", "<C-t>", { desc = "Back to caller", silent = true })
 map("n", "<C-LeftMouse>", ":lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition", silent = true })
 -- projects explorer
@@ -45,7 +42,7 @@ map("n", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, norem
 map("n", "\\dd", '"_dd', { desc = "Delete without copy", silent = true, noremap = true })
 map("n", "\\p", '"+p', { desc = "Paste from system clipboard", silent = true, noremap = true })
 map("n", "\\r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-map("n", "<leader>e", "<cmd>Ex<cr>")
+map("n", "<leader>e", "<cmd>Neotree toggle=true<cr>")
 map("n", "<f1>", ":Telescope help_tags<CR>", { desc = "Vim help pages", noremap = true, silent = true })
 -- visual mode mapings
 -- Use tab to move visully selected text

@@ -32,16 +32,14 @@ return {
 		--    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>F", "<cmd>lua vim.lsp.buf.formatting()<CR>", {noremap=true, silent=true})
 		-- end
 		-- to setup a table of codelens
-		lsp_diag_hdlr = true, -- hook lsp diag handler
 		-- virtual text setup
-		lsp_diag_virtual_text = { space = 0, prefix = "" },
-		lsp_diag_signs = true,
+		diagnostic = { hdlr = true, virtual_text = { space = 0, prefix = "" }, signs = true },
 		lsp_diag_update_in_insert = false,
 		lsp_document_formatting = true,
 		-- set to true: use gopls to format
 		-- false if you want to use other formatter tool(e.g. efm, nulls)
 		lsp_inlay_hints = {
-			enable = true,
+			enable = false,
 			-- Only show inlay hints for the current line
 			only_current_line = true,
 			-- Event which triggers a refersh of the inlay hints.

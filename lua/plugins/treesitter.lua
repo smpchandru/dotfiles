@@ -5,10 +5,11 @@ local M = {
 		require("nvim-treesitter.install").update({ with_sync = true })
 	end,
 	dependencies = {
-		{ "nvim-treesitter/playground",     cmd = "TSPlaygroundToggle" },
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+		{ "nvim-treesitter/nvim-treesitter-textobjects" },
 		{ "romgrk/nvim-treesitter-context", event = "BufReadPre" },
-		"p00f/nvim-ts-rainbow",
+		{ "HiPhish/nvim-ts-rainbow2" },
+		{ "windwp/nvim-ts-autotag" },
 	},
 }
 
@@ -52,7 +53,21 @@ M.config = function()
 			disable = { "go", "python" },
 		},
 		autopairs = { enable = true },
-		rainbow = { enable = true },
+		autotag = {
+			enable = true,
+			enable_rename = true,
+			enable_close = true,
+			enable_close_on_slash = true,
+		},
+		rainbow = {
+			enable = true,
+			-- list of languages you want to disable the plugin for
+			disable = { "jsx", "cpp" },
+			-- Which query to use for finding delimiters
+			query = "rainbow-parens",
+			-- Highlight the entire buffer all at once
+			strategy = require("ts-rainbow.strategy.global"),
+		},
 		textobjects = {
 			lsp_interop = {
 				enable = true,

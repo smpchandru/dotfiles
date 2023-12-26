@@ -1,6 +1,9 @@
 local M = {
 	"nvim-lualine/lualine.nvim",
 	event = "VeryLazy",
+	dependencies = {
+		"SmiteshP/nvim-navic",
+	},
 }
 function M.config()
 	local colors = {

@@ -3,15 +3,24 @@ local servers = {
 	gopls = {
 		settings = {
 			gopls = {
+				allExperiments = true,
 				hints = {
 					assignVariableTypes = true,
 					compositeLiteralFields = true,
-					compositeLiteralTypes = true,
-					constantValues = true,
+					constantValue = true,
 					functionTypeParameters = true,
 					parameterNames = true,
 					rangeVariableTypes = true,
 				},
+				-- hints = {
+				-- 	assignVariableTypes = true,
+				-- 	compositeLiteralFields = true,
+				-- 	compositeLiteralTypes = true,
+				-- 	constantValues = true,
+				-- 	functionTypeParameters = true,
+				-- 	parameterNames = true,
+				-- 	rangeVariableTypes = true,
+				-- },
 			},
 		},
 	},
@@ -23,7 +32,6 @@ local servers = {
 		single_file_support = true,
 		settings = {
 			Lua = {
-
 				workspace = {
 					checkThirdParty = true,
 				},
@@ -35,6 +43,11 @@ local servers = {
 					parameters = {
 						"--log-level=trace",
 					},
+				},
+				hint = {
+					enable = true,
+					arrayIndex = "Enable",
+					setType = true,
 				},
 				diagnostics = {
 					-- enable = false,
@@ -76,38 +89,29 @@ caps.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
-caps = require("cmp_nvim_lsp").default_capabilities(caps)
-local on_attach = function(_, bufnr)
+caps.textDocument.completion.completionItem.snippetSupport = true
+-- caps = require("cmp_nvim_lsp").default_capabilities(caps)
+local on_attach = function(client, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = "LSP: " .. desc
 		end
 		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 	end
-	nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	nmap("<F2>", vim.lsp.buf.rename, "Rename")
-	nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
 	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 	nmap("gr", vim.lsp.buf.references, "[G]oto [D]efinition")
 	nmap("]d", vim.diagnostic.goto_next, "Next diagnostics")
 	nmap("[d", vim.diagnostic.goto_prev, "Prevous Diagnostic")
-	--	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	--	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-
-	-- See `:help K` for why this keymap
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
 	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 	-- Create a command `:Format` local to the LSP buffer
 	vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 		vim.lsp.buf.format({ async = true })
 	end, { desc = "Format current buffer with LSP" })
-	-- lsp signature related settings
 end
 local M = {
 	{
@@ -123,11 +127,8 @@ local M = {
 			require("neodev").setup({
 				library = {
 					enabled = true, -- when not enabled, neodev will not change any settings to the LSP server
-					-- these settings will be used for your Neovim config directory
 					runtime = true, -- runtime path
 					types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-					-- plugins = true, -- installed opt or start plugins in packpath
-					-- you can also specify the list of plugins to make available as a workspace library
 					plugins = { "nvim-treesitter" },
 				},
 				setup_jsonls = true, -- configures jsonls to provide completion for project specific .luarc.json files
@@ -145,6 +146,9 @@ local M = {
 	{
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
+		opts = {
+			inlay_hints = { enabled = true },
+		},
 		config = function()
 			vim.diagnostic.config({
 				virtual_text = false,
@@ -209,12 +213,19 @@ local M = {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = caps,
-						on_attach = on_attach,
+						on_attach = function(client, bufnr)
+							on_attach(client, bufnr)
+						end,
 						settings = servers[server_name],
 					})
 				end,
 				["rust_analyzer"] = function()
 					require("rust-tools").setup({
+						tools = {
+							inlay_hints = {
+								auto = false,
+							},
+						},
 						server = {
 							on_attach = on_attach,
 						},
@@ -277,9 +288,14 @@ local M = {
 				sources = {
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.code_actions.gitsigns,
+					null_ls.builtins.formatting.prettier,
 				},
 			})
 		end,
+	},
+	{
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
 	},
 }
 return M

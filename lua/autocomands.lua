@@ -72,3 +72,66 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 vim.cmd(
 	[[ autocmd User fugitive if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' | nnoremap <buffer> .. :edit %:h<CR> | endif ]]
 )
+
+--[[ vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if client.server_capabilities.inlayHintProvider then
+			vim.lsp.inlay_hint(0, true)
+		end
+	end,
+}) ]]
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		if not (ev.data and ev.data.client_id) then
+			return
+		end
+		-- local bufnr = ev.buf
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+		if client.name ~= "gopls" then
+			return
+		end
+		client.config = vim.tbl_deep_extend("force", client.config, {
+			settings = {
+				gopls = {
+					allExperiments = true,
+					hints = {
+						assignVariableTypes = true,
+						compositeLiteralFields = true,
+						compositeLiteralTypes = true,
+						constantValue = true,
+						functionTypeParameters = true,
+						parameterNames = true,
+						rangeVariableTypes = true,
+					},
+				},
+			},
+		})
+	end,
+})
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		if not (ev.data and ev.data.client_id) then
+			return
+		end
+		-- local bufnr = ev.buf
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+		if client.name ~= "lua_ls" then
+			return
+		end
+
+		client.config = vim.tbl_deep_extend("force", client.config, {
+			settings = {
+				Lua = {
+					hint = {
+						enable = true,
+						arrayIndex = "Enable",
+						setType = true,
+					},
+				},
+			},
+		})
+	end,
+})

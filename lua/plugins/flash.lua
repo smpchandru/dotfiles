@@ -1,10 +1,3 @@
---[[ local M = {
-	{
-		--		"phaazon/hop.nvim",
-		"folke/flash.nvim",
-		event = "VeryLazy",
-	},
-} ]]
 local M = {
 	"folke/flash.nvim",
 	event = "VeryLazy",

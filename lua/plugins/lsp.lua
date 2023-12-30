@@ -185,12 +185,11 @@ local M = {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = "BufReadPre",
-		options = {
-			ensure_installed = vim.tbl_keys(servers),
-			automatic_installation = true,
-		},
-		config = function(_, options)
-			require("mason-lspconfig").setup(options)
+		config = function()
+			require("mason-lspconfig").setup({
+				ensure_installed = vim.tbl_keys(servers),
+				automatic_installation = true,
+			})
 			require("mason-lspconfig").setup_handlers({
 				-- The first entry (without a key) will be the default handler
 				-- and will be called for each installed server that doesn't have
@@ -223,6 +222,46 @@ local M = {
 		"simrat39/symbols-outline.nvim",
 		event = "VeryLazy",
 		config = true,
+	},
+	{ "sumneko/lua-language-server", tag = "3.6.9", ft = "lua", event = "VeryLazy" },
+	{
+		"windwp/nvim-autopairs",
+		event = "VeryLazy",
+		disable = true,
+		config = function()
+			local status_ok, npairs = pcall(require, "nvim-autopairs")
+			if not status_ok then
+				return
+			end
+
+			npairs.setup({
+				check_ts = true,
+				ts_config = {
+					lua = { "string", "source" },
+					javascript = { "string", "template_string" },
+					java = false,
+				},
+				disable_filetype = { "TelescopePrompt", "spectre_panel" },
+				fast_wrap = {
+					map = "<M-e>",
+					chars = { "{", "[", "(", '"', "'" },
+					pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+					offset = 0, -- Offset from pattern match
+					end_key = "$",
+					keys = "qwertyuiopzxcvbnmasdfghjkl",
+					check_comma = true,
+					highlight = "PmenuSel",
+					highlight_grey = "LineNr",
+				},
+			})
+
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			local cmp_status_ok, cmp = pcall(require, "cmp")
+			if not cmp_status_ok then
+				return
+			end
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+		end,
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",

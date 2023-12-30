@@ -1,13 +1,14 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-	event = "BufReadPost",
-	build = function()
+	event = { "VeryLazy" },
+	--[[ build = function()
 		require("nvim-treesitter.install").update({ with_sync = true })
-	end,
+	end, ]]
+	build = ":TSUpdate",
 	dependencies = {
-		{ "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+		{ "nvim-treesitter/playground",                 cmd = "TSPlaygroundToggle" },
 		{ "nvim-treesitter/nvim-treesitter-textobjects" },
-		{ "romgrk/nvim-treesitter-context", event = "BufReadPre" },
+		{ "romgrk/nvim-treesitter-context",             event = "BufReadPre" },
 		{ "HiPhish/nvim-ts-rainbow2" },
 		{ "windwp/nvim-ts-autotag" },
 	},
@@ -15,7 +16,7 @@ local M = {
 
 M.config = function()
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = { "vim", "go", "yaml", "json", "python", "rust", "lua" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+		ensure_installed = { "vim", "go", "yaml", "json", "python", "rust", "lua", "markdown", "vim", "vimdoc" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
 		-- TODO seems to be broken
 		ignore_install = { "haskell" },
 		highlight = {

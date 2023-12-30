@@ -17,6 +17,9 @@ return {
 			end
 		end
 	end,
+	keys = {
+		{ "<leader>e", ":Neotree toggle<CR>", "NeoTree Explorer" },
+	},
 	opts = {
 		filesystem = {
 			bind_to_cwd = false,

@@ -86,9 +86,9 @@ function M.get_go_func_info()
 	(function_declaration
 	  name:(identifier) @name
 	  parameters: (parameter_list) @params
-	  result: [ 
-	  	(parameter_list) 
-		(type_identifier) 
+	  result: [
+	  	(parameter_list)
+		(type_identifier)
 	  ]? @results
 	  )
 	]]

@@ -62,5 +62,8 @@
         "/home/chandru/.local/share/nvim/site/pack/packer/start/which-key.nvim",
         "${3rd}/luassert/library",
         "${3rd}/lfs/library"
+    ],
+    "diagnostics.disable": [
+        "unused-local"
     ]
 }

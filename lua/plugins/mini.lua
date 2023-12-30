@@ -8,6 +8,8 @@ local M = {
 		require("mini.pick").setup()
 		require("mini.basics").setup()
 		require("mini.cursorword").setup()
+		require("mini.pairs").setup()
+		require("mini.indentscope").setup({ symbol = "▏" })
 		require("mini.files").setup({
 			-- Customization of shown content
 			content = {

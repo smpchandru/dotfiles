@@ -15,7 +15,7 @@ map("n", "<C-h>", "<C-w>h", { desc = "Move to the left window", silent = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to the down window", silent = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Move to the up window", silent = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to the right window", silent = true })
--- map("n", "<leader><leader>s", "<cmd>luafile ~/.config/nvim/lua/snippets.lua<CR>", { silent = false })
+-- scroll related mapings
 
 map("n", "<C-y>", ":e $MYVIMRC<CR>", { desc = "Config", noremap = true, silent = true })
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
@@ -26,12 +26,9 @@ map("n", "<leader>b", "<cmd>Pick buffers<CR>", { desc = "Search buffers", norema
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
-map("n", "s", ":HopChar2<cr>", { desc = "Hop 2 chars", silent = true })
-map("n", "S", ":HopWord<cr>", { desc = "Hop word", silent = true })
 map("n", "<C-RightMouse>", "<C-t>", { desc = "Back to caller", silent = true })
 map("n", "<C-LeftMouse>", ":lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition", silent = true })
 -- projects explorer
-map("n", "<leader>w", ":Telescope projects<CR>", { noremap = true, desc = "Workspaces", silent = true })
 map("n", "<tab>", ":bnext<CR>", { desc = "Next buffer", silent = true, noremap = true })
 map("n", "<s-tab>", ":bp<CR>", { desc = "Previous buffer", silent = true, noremap = true })
 -- misc
@@ -42,10 +39,8 @@ map("n", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, norem
 map("n", "\\dd", '"_dd', { desc = "Delete without copy", silent = true, noremap = true })
 map("n", "\\p", '"+p', { desc = "Paste from system clipboard", silent = true, noremap = true })
 map("n", "\\r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-map("n", "<leader>e", "<cmd>Neotree toggle=true<cr>")
-map("n", "<f1>", ":Telescope help_tags<CR>", { desc = "Vim help pages", noremap = true, silent = true })
 -- visual mode mapings
--- Use tab to move visully selected text
+-- Use tab to move mapings selected text
 map("v", "<S-TAB>", "<gv", { desc = "Move visual text left", noremap = true, silent = true })
 map("v", "<TAB>", ">gv", { desc = "Move visual text rigt ", noremap = true, silent = true })
 map("v", "<C-/>", "gb", { desc = "Comment block", remap = true, silent = true })

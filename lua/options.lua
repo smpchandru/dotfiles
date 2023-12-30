@@ -3,17 +3,15 @@ if vim.g.myopt_loaded then
 end
 vim.g.myopt_loaded = true
 local opt = {
-	hidden = true,       -- Required to keep multiple buffers open multiple buffers
-	fileencoding = "utf-8", -- The encoding written to file
-	splitbelow = true,   -- Horizontal splits will automatically be below
-	splitright = true,   -- Vertical splits will automatically be to the right
-	conceallevel = 0,    -- So that I can see `` in markdown files
-	showmode = false,    -- We don't need to see things like -- INSERT -- anymore
-	backup = false,      -- This is recommended by coc
+	hidden = true,    -- Required to keep multiple buffers open multiple buffers
+	-- fileencoding = "utf-8", -- The encoding written to file
+	splitbelow = true, -- Horizontal splits will automatically be below
+	splitright = true, -- Vertical splits will automatically be to the right
+	conceallevel = 0, -- So that I can see `` in markdown files
+	showmode = false, -- We don't need to see things like -- INSERT -- anymore
+	backup = false,   -- This is recommended by coc
 	writebackup = false, -- This is recommended by coc
-	updatetime = 50,     -- Faster completion
-	timeoutlen = 500,    -- By default timeoutlen is 1000 ms
-	shiftwidth = 4,
+	updatetime = 50,  -- Faster completion timeoutlen = 500, -- By default timeoutlen is 1000 ms shiftwidth = 4,
 	tabstop = 4,
 	smarttab = true,
 	autoindent = true,

@@ -7,7 +7,10 @@ return {
 			char = "▏",
 			tab_char = "▏",
 		},
-		scope = { enabled = true },
+		scope = {
+			highlight = { "IndentBlanklineContextChar" },
+			enabled = true,
+		},
 		exclude = {
 			filetypes = {
 				"help",

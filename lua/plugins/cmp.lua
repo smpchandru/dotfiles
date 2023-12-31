@@ -40,16 +40,16 @@ local M = {
 				end,
 			},
 			window = {
-				completion = comp.config.window.bordered(),
-				documentation = comp.config.window.bordered(),
-				--[[ documentation = {
+				-- completion = comp.config.window.bordered(),
+				-- documentation = comp.config.window.bordered(),
+				documentation = {
 					border = "single",
 					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
 				},
 				completion = {
 					border = "single",
 					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-				}, ]]
+				},
 			},
 			confirmation = {
 				default_behavior = comp.ConfirmBehavior.Replace,
@@ -129,8 +129,8 @@ local M = {
 				{ name = "path" },
 				{ name = "vim-dadbod-completion" },
 				{ name = "latex_symbols" },
-				{ name = "buffer", keyword_length = 5 },
-				{ name = "dictionary", keyword_length = 4 },
+				{ name = "buffer",               keyword_length = 5 },
+				{ name = "dictionary",           keyword_length = 4 },
 				-- { name = "nvim_lsp_signature_help" },
 			},
 		})

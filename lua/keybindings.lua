@@ -4,12 +4,12 @@ local map = vim.keymap.set
 map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })
 map("n", "<Leader>f", ":lua MiniFiles.open()<CR>", { desc = "File System edit", noremap = true, silent = true })
-map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
+map("n", "<leader>o", "SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
 -- resize windows
-map("n", "<M-j>", ":resize -2<CR>", { desc = "Resize window down", noremap = true, silent = true })
-map("n", "<M-k>", ":resize +2<CR>", { desc = "Resize window up", noremap = true, silent = true })
-map("n", "<M-h>", ":vertical resize -2<CR>", { desc = "Resize window left", noremap = true, silent = true })
-map("n", "<M-l>", ":vertical resize +2<CR>", { desc = "Resize window right", noremap = true, silent = true })
+map("n", "<C-M-j>", ":resize -2<CR>", { desc = "Resize window down", noremap = true, silent = true })
+map("n", "<C-M-k>", ":resize +2<CR>", { desc = "Resize window up", noremap = true, silent = true })
+map("n", "<C-M-h>", ":vertical resize -2<CR>", { desc = "Resize window left", noremap = true, silent = true })
+map("n", "<C-M-l>", ":vertical resize +2<CR>", { desc = "Resize window right", noremap = true, silent = true })
 -- windows navigation
 map("n", "<C-h>", "<C-w>h", { desc = "Move to the left window", silent = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Move to the down window", silent = true })
@@ -17,12 +17,12 @@ map("n", "<C-k>", "<C-w>k", { desc = "Move to the up window", silent = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to the right window", silent = true })
 -- scroll related mapings
 
-map("n", "<C-y>", ":e $MYVIMRC<CR>", { desc = "Config", noremap = true, silent = true })
+map("n", "<C-y>", "<cmd>e $MYVIMRC<CR>", { desc = "Config", noremap = true, silent = true })
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
-map("n", "<C-p>", "<cmd>Pick files<CR>", { desc = "Search files", noremap = true, silent = true })
-map("n", "<leader>b", "<cmd>Pick buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
+map("n", "<C-p>", "<cmd>Telescope find_files<CR>", { desc = "Search files", noremap = true, silent = true })
+map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })

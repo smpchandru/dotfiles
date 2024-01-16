@@ -4,6 +4,6 @@ return {
 		require("spectre").setup()
 	end,
 	keys = {
-		{ "<leader>s", "<cmd>lua require('spectre').open()<CR>", desc = "SearchReplace" },
+		{ "<leader>s", "<cmd>lua require('spectre').open_visual()<CR>", desc = "SearchReplace" },
 	},
 }

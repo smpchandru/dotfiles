@@ -267,15 +267,16 @@ local function git_menu()
 					gitsigns.blame_line({ full = true })
 				end,
 			},
-			{ "/", gitsigns.show, { exit = true } }, -- show the base of the file
+			{ "/",       gitsigns.show,     { exit = true } }, -- show the base of the file
 			{ "<Enter>", "<cmd>Neogit<CR>", { exit = true } },
-			{ "q", nil, { exit = true, nowait = true } },
+			{ "q",       nil,               { exit = true, nowait = true } },
 		},
 	}
 end
 local M = {
 	"anuvyklack/hydra.nvim",
 	event = "VeryLazy",
+	enabled=false,
 	dependencies = "anuvyklack/keymap-layer.nvim",
 	config = function()
 		local Hydra = require("hydra")

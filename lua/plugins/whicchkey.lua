@@ -31,12 +31,12 @@ M.config = function()
 			winblend = 20,
 		},
 		layout = {
-			height = { min = 4, max = 15 },                                     -- min and max height of the columns
-			width = { min = 20, max = 50 },                                     -- min and max width of the columns
-			spacing = 3,                                                        -- spacing between columns
+			height = { min = 4, max = 15 },                         -- min and max height of the columns
+			width = { min = 20, max = 50 },                         -- min and max width of the columns
+			spacing = 3,                                            -- spacing between columns
 		},
 		hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-		show_help = true,                                                       -- show help message on the command line when the popup is visible
+		show_help = true,                                               -- show help message on the command line when the popup is visible
 	})
 
 	-- Set leader
@@ -56,8 +56,20 @@ M.config = function()
 		["o"] = "Outline",
 		["m"] = "Mouse Toggle",
 		["w"] = "Workspase/Projects",
-		["g"] = "Git(hydra)",
 		["f"] = "File system",
+		["e"] = "File explorer",
+		g = {
+			name = "Git",
+			g = { "<cmd>Neogit<CR>", "Git status" },
+			p = { "<cmd>Git pull<CR>", "preview hunk" },
+			P = { "<cmd>Git push<CR>", "preview hunk" },
+			d = { "<cmd>Gitsigns diffthis<CR>", "diff this file" },
+		},
+		h = {
+			name = "Git hunk",
+			p = { "<cmd>Gitsigns preview_hunk<CR>", "Preview hunk" },
+			r = { "<cmd>Gitsigns reset_hunk<CR>", "Reset hunk" },
+		},
 		t = {
 			name = "Telescope",
 			t = { ":Telescope<CR>", "Telescope" },
@@ -82,7 +94,6 @@ M.config = function()
 	}
 	local wk = require("which-key")
 	wk.register(mappings, opts)
-	wk.register({ ["<leader>w"] = { "<cmd>Telescope projects<cr>", "List projects(telescope)" } })
+	wk.register({ ["<leader>w"] = { "<cmd>Telescope projects theme=dropdown<cr>", "List projects(telescope)" } })
 end
 return M
-

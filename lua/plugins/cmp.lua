@@ -1,4 +1,4 @@
-local has_words_before = function()
+local has_words_bdfore = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
@@ -40,15 +40,16 @@ local M = {
 				end,
 			},
 			window = {
-				-- completion = comp.config.window.bordered(),
-				-- documentation = comp.config.window.bordered(),
+				--[[ completion = comp.config.window.bordered(),
+				documentation = comp.config.window.bordered(), ]]
 				documentation = {
-					border = "single",
-					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+					border = "rounded",
+					winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
 				},
 				completion = {
-					border = "single",
-					winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+					border = "rounded",
+					-- winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+					winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
 				},
 			},
 			confirmation = {
@@ -129,8 +130,8 @@ local M = {
 				{ name = "path" },
 				{ name = "vim-dadbod-completion" },
 				{ name = "latex_symbols" },
-				{ name = "buffer",               keyword_length = 5 },
-				{ name = "dictionary",           keyword_length = 4 },
+				{ name = "buffer", keyword_length = 5 },
+				{ name = "dictionary", keyword_length = 4 },
 				-- { name = "nvim_lsp_signature_help" },
 			},
 		})

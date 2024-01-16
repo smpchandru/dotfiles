@@ -3,10 +3,6 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
-		--"rcarriga/nvim-notify",
 	},
 	opts = {
 		lsp = {
@@ -35,6 +31,25 @@ return {
 			long_message_to_split = true,
 			inc_rename = true,
 			lsp_doc_border = true,
+		},
+		views = {
+			popupmenu = {
+				relative = "editor",
+				position = {
+					row = 8,
+					col = "50%",
+				},
+				size = {
+					width = 60,
+					height = 10,
+				},
+				border = {
+					padding = { 0, 0 },
+				},
+				win_options = {
+					winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
+				},
+			},
 		},
 	},
 	--[[ -- stylua: ignore

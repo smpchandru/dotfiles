@@ -21,7 +21,7 @@ function M.config()
 	}
 	local opt = {
 		options = {
-			theme = "gruvbox-material",
+			theme = "tokyonight",
 			component_separators = "|",
 			section_separators = { left = "", right = "" },
 			globalstatus = true,

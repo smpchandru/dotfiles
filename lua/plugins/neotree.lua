@@ -18,7 +18,7 @@ return {
 		end
 	end,
 	keys = {
-		{ "<leader>e", ":Neotree toggle<CR>", "NeoTree Explorer" },
+		{ "<leader>e", "<cmd>Neotree toggle<CR>", "NeoTree Explorer", { silent = true } },
 	},
 	opts = {
 		filesystem = {
@@ -48,14 +48,14 @@ return {
 						display_name = "  Git ", -- string | nil
 					},
 				},
-				content_layout = "start", -- string
-				tabs_layout = "equal", -- string
+				content_layout = "start",     -- string
+				tabs_layout = "equal",        -- string
 				truncation_character = "…", -- string
-				tabs_min_width = nil, -- int | nil
-				tabs_max_width = nil, -- int | nil
-				padding = 0, -- int | { left: int, right: int }
+				tabs_min_width = nil,         -- int | nil
+				tabs_max_width = nil,         -- int | nil
+				padding = 0,                  -- int | { left: int, right: int }
 				separator = { left = "▏", right = "▕" }, -- string | { left: string, right: string, override: string | nil }
-				separator_active = nil, -- string | { left: string, right: string, override: string | nil } | nil
+				separator_active = nil,       -- string | { left: string, right: string, override: string | nil } | nil
 				show_separator_on_edge = false, -- boolean
 				highlight_tab = "NeoTreeTabInactive", -- string
 				highlight_tab_active = "NeoTreeTabActive", -- string

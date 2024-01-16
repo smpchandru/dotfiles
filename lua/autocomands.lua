@@ -135,3 +135,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		})
 	end,
 })
+local _ = vim.api.nvim_create_augroup("fugitive", {
+	clear = true,
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	pattern = "fugitive:///*",
+	group = "fugitive",
+	command = "set bufhidden=delete",
+})
+-- vim.cmd([[
+-- autocmd User fugitive
+--   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+--   \   nnoremap <buffer> .. :edit %:h<CR> |
+--   \ endif
+-- ]])

@@ -1,4 +1,5 @@
 local M = {}
+
 function M.SetPythonIndent()
 	vim.o.tabstop = 4
 	vim.o.softtabstop = 4
@@ -10,25 +11,20 @@ function M.SetPythonIndent()
 end
 
 -- C/C++ indentation settings
-function M.SetCCIndent()
-	vim.o.tabstop = 2
-	vim.o.softtabstop = 2
-	vim.o.shiftwidth = 2
-	vim.o.textwidth = 0
-	vim.o.expandtab = true
+function M.SetCCIndent() vim.o.tabstop = 2 vim.o.softtabstop = 2 vim.o.shiftwidth = 2 vim.o.textwidth = 0 vim.o.expandtab = true
 	vim.o.fileformat = "unix"
 end
 
 -- Toggle mouse enable
 -- copied from http://unix.stackexchange.com/questions/156707/how-to-toggle-mouse-support-in-vim
 function M.ToggleMouse()
-	-- check if mouse is enabled
 	if vim.o.mouse == "a" then
 		-- disable mouse
 		vim.o.mouse = ""
 	else
 		-- enable mouse everywhere
 		vim.o.mouse = "a"
+
 	end
 end
 
@@ -128,6 +124,7 @@ function M.get_go_func_info()
 		param = paramInfo,
 		funcStart = method_node:start(),
 	}
+
 end
 
 return M

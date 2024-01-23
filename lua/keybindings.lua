@@ -4,7 +4,7 @@ local map = vim.keymap.set
 map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })
 map("n", "<Leader>f", ":lua MiniFiles.open()<CR>", { desc = "File System edit", noremap = true, silent = true })
-map("n", "<leader>o", "SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
+map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
 -- resize windows
 map("n", "<C-M-j>", ":resize -2<CR>", { desc = "Resize window down", noremap = true, silent = true })
 map("n", "<C-M-k>", ":resize +2<CR>", { desc = "Resize window up", noremap = true, silent = true })

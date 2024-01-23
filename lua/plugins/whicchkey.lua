@@ -60,9 +60,9 @@ M.config = function()
 		["e"] = "File explorer",
 		g = {
 			name = "Git",
-			g = { "<cmd>Neogit<CR>", "Git status" },
-			p = { "<cmd>Git pull<CR>", "preview hunk" },
-			P = { "<cmd>Git push<CR>", "preview hunk" },
+			g = { "<cmd>Neogit<CR>", "status" },
+			p = { "<cmd>Git pull<CR>", "pull" },
+			P = { "<cmd>Git push<CR>", "push" },
 			d = { "<cmd>Gitsigns diffthis<CR>", "diff this file" },
 		},
 		h = {

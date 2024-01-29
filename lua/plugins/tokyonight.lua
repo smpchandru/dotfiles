@@ -22,6 +22,7 @@ return {
 			hl.TelescopeBorder = { fg = c.border_highlight, bg = c.none }
 			hl.TelescopeNormal = { fg = c.fg, bg = c.none }
 			hl.LspSignatureActiveParameter = { fg = c.red, bold = true }
+			hl.GitSignsAdd = { fg = "#527A58" } -- diff mode: Added line |diff.txt|
 		end,
 	},
 }

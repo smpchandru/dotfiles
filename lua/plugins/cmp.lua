@@ -130,8 +130,8 @@ local M = {
 				{ name = "path" },
 				{ name = "vim-dadbod-completion" },
 				{ name = "latex_symbols" },
-				{ name = "buffer", keyword_length = 5 },
-				{ name = "dictionary", keyword_length = 4 },
+				{ name = "buffer",               keyword_length = 5 },
+				{ name = "dictionary",           keyword_length = 4 },
 				-- { name = "nvim_lsp_signature_help" },
 			},
 		})
@@ -151,9 +151,8 @@ local M = {
 			dic = {
 				["*"] = "/usr/share/dict/words",
 			},
-			exact = 2,
+			exact_length = 2,
 			async = false,
-			capacity = 5,
 			debug = false,
 		})
 	end,

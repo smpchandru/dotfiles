@@ -8,6 +8,7 @@ return {
 		},
 		event = "VeryLazy",
 	},
+	{ "rcarriga/nvim-notify" },
 	{ "smpchandru/gruvbox-material" },
 	{ "chaoren/vim-wordmotion",     event = "VeryLazy" },
 	{ "rhysd/git-messenger.vim",    event = "VeryLazy" },

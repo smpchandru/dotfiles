@@ -1,10 +1,2 @@
--- require('nvim-treesitter.ts_utils').get_vim_rangec
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
---require("default-config")
---dofile(CONFIG_PATH .. "/ch-config.lua")
-require("lazy.config")
-require("options")
-require("utils")
-require("keybindings")
-require("autocomands")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")

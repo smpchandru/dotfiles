@@ -1,10 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	cmd = "Neotree",
-	--[[ keys = {
-		{ "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-		{ "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
-	}, ]]
 	deactivate = function()
 		vim.cmd([[Neotree close]])
 	end,
@@ -21,21 +17,22 @@ return {
 		{ "<leader>e", "<cmd>Neotree toggle<CR>", "NeoTree Explorer", { silent = true } },
 	},
 	opts = {
+		open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "edgy" },
 		filesystem = {
-			bind_to_cwd = false,
+			bind_to_cwd = true,
 			follow_current_file = true,
 			use_libuv_file_watcher = true,
 		},
 		source_selector = {
-			winbar = true, -- toggle to show selector on winbar
+			-- winbar = true, -- toggle to show selector on winbar
 			statusline = true, -- toggle to show selector on statusline
-			tabs_layout = "equal",
+						--tabs_layout = "equal",
 			show_scrolled_off_parent_node = true,
-			sources = {
+			-- sources = {
 				{ source = "filesystem" },
 				{ source = "buffers" },
-				{ source = "git_status" },
-			},
+				-- { source = "git_status" },
+			-- },
 			window = {
 				width = 30,
 				mappings = {

@@ -223,7 +223,7 @@ local M = {
 		event = "VeryLazy",
 		config = true,
 	},
-	{ "sumneko/lua-language-server", tag = "3.6.9", ft = "lua", event = "VeryLazy" },
+	{ "sumneko/lua-language-server", ft = "lua", event = "VeryLazy", pin = true },
 	{
 		"windwp/nvim-autopairs",
 		event = "VeryLazy",

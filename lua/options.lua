@@ -11,11 +11,16 @@ local opt = {
 	showmode = false, -- We don't need to see things like -- INSERT -- anymore
 	backup = false, -- This is recommended by coc
 	writebackup = false, -- This is recommended by coc
-	updatetime = 50, -- Faster completion timeoutlen = 500, -- By default timeoutlen is 1000 ms shiftwidth = 4,
+	ignorecase = true,
+	smartcase = true,
+	updatetime = 250, -- Faster completion timeoutlen = 500, -- By default timeoutlen is 1000 ms shiftwidth = 4,
+	timeoutlen = 300,
+	inccommand = "split",
 	tabstop = 4,
 	smarttab = true,
 	autoindent = true,
 	laststatus = 3,
+	cursorline = true,
 	background = "dark",
 	syntax = "on",
 	filetype = "on",

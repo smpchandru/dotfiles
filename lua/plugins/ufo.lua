@@ -1,5 +1,6 @@
 return {
 	"kevinhwang91/nvim-ufo",
+	enabled = false,
 	dependencies = "kevinhwang91/promise-async",
 	config = function()
 		local ftMap = {
@@ -11,7 +12,7 @@ return {
 		}
 		require("ufo").setup({
 			open_fold_hl_timeout = 150,
-			close_fold_kinds = { "imports", "comment" },
+			close_fold_kinds_for_ft = { "imports", "comment", "yaml" },
 			preview = {
 				win_config = {
 					border = { "", "─", "", "", "", "─", "", "" },

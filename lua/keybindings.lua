@@ -21,8 +21,13 @@ map("n", "<C-y>", "<cmd>e $MYVIMRC<CR>", { desc = "Config", noremap = true, sile
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
-map("n", "<C-p>", "<cmd>Files<CR>", { desc = "Search files", noremap = true, silent = true })
-map("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "Search buffers", noremap = true, silent = true })
+map("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "Search files", noremap = true, silent = true })
+map(
+	"n",
+	"<leader>b",
+	"<cmd>lua require('fzf-lua').buffers()<CR>",
+	{ desc = "Search buffers", noremap = true, silent = true }
+)
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
@@ -49,3 +54,4 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text up", silent = true, norema
 map("v", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, noremap = true })
 map("v", "\\d", '"_d', { desc = "Delete with black hole", silent = true, noremap = true })
 map("x", "\\p", '"_dP', { desc = "Paste without yank on visual selection", silent = true, noremap = true })
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })

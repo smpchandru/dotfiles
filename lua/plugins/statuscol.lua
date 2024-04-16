@@ -7,13 +7,13 @@ return {
 			-- configuration goes here, for example:
 			-- relculright = true,
 			segments = {
-				{ text = { "%s" } },
 				{
-					sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
-					click = "v:lua.ScSa",
+					text = { builtin.lnumfunc, " " },
+					condition = { true, builtin.not_empty },
+					click = "v:lua.ScLa",
 				},
-				{ text = { builtin.lnumfunc, " " } },
-				{ text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
+				{ text = { "%s" }, click = "v:lua.ScSa" },
+				-- { text = { "%C" }, click = "v:lua.ScFa" },
 			},
 		})
 	end,

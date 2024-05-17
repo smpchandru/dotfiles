@@ -33,7 +33,7 @@ return {
   {
     "NeogitOrg/neogit",
     -- event = "VeryLazy",
-    -- branch = "nightly",
+    branch = "nightly",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },

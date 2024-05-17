@@ -1,4 +1,4 @@
-local has_words_bdfore = function()
+local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
@@ -27,14 +27,17 @@ local M = {
       end,
     },
   },
-  config = function()
+  config = function(_, opts)
     --	cmp_hghlights()
+    for _, source in ipairs(opts.sources) do
+      source.group_index = source.group_index or 1
+    end
     local compare = require("cmp.config.compare")
     local types = require("cmp.types")
-    local comp = require("cmp")
+    local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
-    comp.setup({
+    cmp.setup({
       completion = {
         autocomplete = {
           types.cmp.TriggerEvent.InsertEnter,
@@ -50,20 +53,20 @@ local M = {
         end,
       },
       window = {
-        --[[ completion = comp.config.window.bordered(),
-				documentation = comp.config.window.bordered(), ]]
+        --[[ completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(), ]]
         documentation = {
-          border = "rounded",
+          border = "single",
           winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
         },
         completion = {
-          border = "rounded",
+          border = "single",
           -- winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
           winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
         },
       },
       confirmation = {
-        default_behavior = comp.ConfirmBehavior.Replace,
+        default_behavior = cmp.ConfirmBehavior.Replace,
       },
       sorting = {
         priority_weight = 2,
@@ -78,31 +81,32 @@ local M = {
         },
       },
       mapping = {
-        ["<C-p>"] = comp.mapping.select_prev_item(),
-        ["<C-n>"] = comp.mapping.select_next_item(),
-        ["<C-b>"] = comp.mapping.scroll_docs(-4),
-        ["<C-f>"] = comp.mapping.scroll_docs(4),
-        ["<C-Space>"] = comp.mapping.complete(),
-        ["<C-e>"] = comp.mapping.close(),
-        ["<CR>"] = comp.mapping.confirm({
-          behavior = comp.ConfirmBehavior.Replace,
+        ["<C-p>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-n>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<S-CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         }),
-        ["<Tab>"] = comp.mapping(function(fallback)
-          if comp.visible() then
-            comp.select_next_item()
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
-            comp.complete()
+            cmp.complete()
           else
             fallback()
           end
         end, { "i", "s", "c" }),
 
-        ["<S-Tab>"] = comp.mapping(function(fallback)
-          if comp.visible() then
-            comp.select_prev_item()
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
           else
@@ -111,6 +115,7 @@ local M = {
         end, { "i", "s", "c" }),
       },
       formatting = {
+        -- expandable_indicator = true,
         fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format({
           with_text = false,
@@ -129,7 +134,7 @@ local M = {
       },
       experimental = {
         native_menu = false,
-        ghost_text = { enabled = true },
+        ghost_text = { hl_group = "CmpGhostText" },
       },
       sources = {
         { name = "nvim_lua" },
@@ -145,13 +150,25 @@ local M = {
         -- { name = "nvim_lsp_signature_help" },
       },
     })
-    comp.setup.cmdline("/", {
+    local Kind = cmp.lsp.CompletionItemKind
+    cmp.event:on("confirm_done", function(event)
+      if not vim.tbl_contains(opts.auto_brackets or {}, vim.bo.filetype) then
+        return
+      end
+      local entry = event.entry
+      local item = entry:get_completion_item()
+      if vim.tbl_contains({ Kind.Function, Kind.Method }, item.kind) then
+        local keys = vim.api.nvim_replace_termcodes("()<left>", false, false, true)
+        vim.api.nvim_feedkeys(keys, "i", true)
+      end
+    end)
+    cmp.setup.cmdline("/", {
       sources = {
         { name = "buffer" },
       },
     })
-    comp.setup.cmdline(":", {
-      sources = comp.config.sources({
+    cmp.setup.cmdline(":", {
+      sources = cmp.config.sources({
         { name = "path" },
       }, {
         { name = "cmdline" },

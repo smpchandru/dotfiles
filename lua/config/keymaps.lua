@@ -1,7 +1,8 @@
 -- Normal mode key bindgings
 --
+--
 local map = vim.keymap.set
-map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+-- map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 -- map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })
 map("n", "<Leader>f", ":lua MiniFiles.open()<CR>", { desc = "File System edit", noremap = true, silent = true })
 map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
@@ -23,16 +24,16 @@ map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true 
 -- navigate buffers
 map("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "Search files", noremap = true, silent = true })
 map(
-	"n",
-	"<leader>b",
-	"<cmd>lua require('fzf-lua').buffers()<CR>",
-	{ desc = "Search buffers", noremap = true, silent = true }
+  "n",
+  "<leader>b",
+  "<cmd>lua require('fzf-lua').buffers()<CR>",
+  { desc = "Search buffers", noremap = true, silent = true }
 )
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
 map("n", "<C-RightMouse>", "<C-t>", { desc = "Back to caller", silent = true })
-map("n", "<C-LeftMouse>", ":lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition", silent = true })
+map("n", "<C-LeftMouse>", vim.lsp.buf.definition, { desc = "Go to definition", silent = true })
 -- projects explorer
 map("n", "<tab>", ":bnext<CR>", { desc = "Next buffer", silent = true, noremap = true })
 map("n", "<s-tab>", ":bp<CR>", { desc = "Previous buffer", silent = true, noremap = true })
@@ -55,3 +56,6 @@ map("v", "\\y", '"+y', { desc = "Copy to system clipboard", silent = true, norem
 map("v", "\\d", '"_d', { desc = "Delete with black hole", silent = true, noremap = true })
 map("x", "\\p", '"_dP', { desc = "Paste without yank on visual selection", silent = true, noremap = true })
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "status" })
+map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "diff" })
+map("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })

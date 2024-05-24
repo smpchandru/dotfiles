@@ -18,7 +18,6 @@ map("n", "<C-k>", "<C-w>k", { desc = "Move to the up window", silent = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Move to the right window", silent = true })
 -- scroll related mapings
 
-map("n", "<C-y>", "<cmd>e $MYVIMRC<CR>", { desc = "Config", noremap = true, silent = true })
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
@@ -59,3 +58,4 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "status" })
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "diff" })
 map("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
+map("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", { desc = "Neovide toggle full screen" })

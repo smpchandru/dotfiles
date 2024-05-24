@@ -92,6 +92,10 @@ local M = {
           select = true,
         }),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        --[[ ["C-y"] = cmp.mapping(
+          cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
+          { "i", "c" }
+        ), ]]
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -173,6 +177,12 @@ local M = {
       }, {
         { name = "cmdline" },
       }),
+    })
+    cmp.setup.filetype({ "sql" }, {
+      sources = {
+        { name = "vim-dadbod-completion" },
+        { name = "buffer" },
+      },
     })
     require("cmp_dictionary").setup({
       dic = {

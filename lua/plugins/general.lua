@@ -1,4 +1,3 @@
---local rainbow_delimiters = require("rainbow-delimiters")
 return {
   { "tpope/vim-repeat", event = "InsertEnter" },
   { "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
@@ -19,20 +18,21 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   {
-    "davidgranstrom/nvim-markdown-preview",
-    ft = "markdown",
+    "mlaursen/vim-react-snippets",
+    event = "VeryLazy",
   },
-  { "mlaursen/vim-react-snippets" },
   {
     "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
   },
   {
     "KabbAmine/vCoolor.vim",
+    event = "VeryLazy",
   },
   -- { "tiagovla/scope.nvim", event = "VeryLazy", opts = {} },
   {
     "NeogitOrg/neogit",
-    -- event = "VeryLazy",
+    event = "VeryLazy",
     -- branch = "nightly",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -63,6 +63,7 @@ return {
   },
   {
     "tpope/vim-dadbod",
+    event = "VeryLazy",
     dependencies = {
       "kristijanhusak/vim-dadbod-completion",
       "kristijanhusak/vim-dadbod-ui",
@@ -78,7 +79,7 @@ return {
     "tris203/precognition.nvim",
     config = {
       -- startVisible = true,
-      -- showBlankVirtLine = true,
+      -- showBlankVirtLine = false,
       -- highlightColor = { link = "Comment"),
       -- hints = {
       --      Caret = { text = "^", prio = 2 },
@@ -92,13 +93,13 @@ return {
       --      B = { text = "B", prio = 6 },
       --      E = { text = "E", prio = 5 },
       -- },
-      -- gutterHints = {
-      --     -- prio is not currently used for gutter hints
-      --     G = { text = "G", prio = 1 },
-      --     gg = { text = "gg", prio = 1 },
-      --     PrevParagraph = { text = "{", prio = 1 },
-      --     NextParagraph = { text = "}", prio = 1 },
-      -- },
+      gutterHints = {
+        --     -- prio is not currently used for gutter hints
+        --     G = { text = "G", prio = 1 },
+        --     gg = { text = "gg", prio = 1 },
+        PrevParagraph = { text = "{", prio = 0 },
+        NextParagraph = { text = "}", prio = 0 },
+      },
     },
   },
 }

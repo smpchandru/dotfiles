@@ -119,7 +119,7 @@ local M = {
         end, { "i", "s", "c" }),
       },
       formatting = {
-        -- expandable_indicator = true,
+        expandable_indicator = true,
         fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format({
           with_text = false,

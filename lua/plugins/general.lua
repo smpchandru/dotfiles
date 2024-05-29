@@ -13,7 +13,7 @@ return {
   -- { "rhysd/git-messenger.vim", event = "VeryLazy" },
   { "kevinhwang91/nvim-bqf", event = "VeryLazy" },
   { "ThePrimeagen/vim-be-good", event = "VeryLazy" },
-  { "mg979/vim-visual-multi", event = "VeryLazy" },
+  { "mg979/vim-visual-multi", nt = "VeryLazy" },
   {
     "nvim-tree/nvim-web-devicons",
   },
@@ -23,7 +23,8 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    config = true,
   },
   {
     "KabbAmine/vCoolor.vim",

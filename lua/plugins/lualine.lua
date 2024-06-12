@@ -21,7 +21,7 @@ function M.config()
   }
   local opt = {
     options = {
-      theme = "tokyonight",
+      theme = "auto",
       component_separators = "|",
       -- section_separators = { left = "|", right = "" },
       section_separators = { left = "", right = "" },

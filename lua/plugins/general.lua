@@ -13,7 +13,7 @@ return {
   -- { "rhysd/git-messenger.vim", event = "VeryLazy" },
   { "kevinhwang91/nvim-bqf", event = "VeryLazy" },
   { "ThePrimeagen/vim-be-good", event = "VeryLazy" },
-  { "mg979/vim-visual-multi", nt = "VeryLazy" },
+  { "mg979/vim-visual-multi", event = "VeryLazy" },
   {
     "nvim-tree/nvim-web-devicons",
   },
@@ -78,9 +78,10 @@ return {
   },
   {
     "tris203/precognition.nvim",
+    enabled = false,
     config = {
-      -- startVisible = true,
-      -- showBlankVirtLine = false,
+      startVisible = true,
+      showBlankVirtLine = true,
       -- highlightColor = { link = "Comment"),
       -- hints = {
       --      Caret = { text = "^", prio = 2 },
@@ -96,11 +97,32 @@ return {
       -- },
       gutterHints = {
         --     -- prio is not currently used for gutter hints
-        --     G = { text = "G", prio = 1 },
-        --     gg = { text = "gg", prio = 1 },
-        PrevParagraph = { text = "{", prio = 0 },
-        NextParagraph = { text = "}", prio = 0 },
+        G = { text = "", prio = 0 },
+        gg = { text = "", prio = 0 },
+        PrevParagraph = { text = "", prio = 0 },
+        NextParagraph = { text = "", prio = 0 },
       },
+    },
+  },
+  {
+    "MagicDuck/grug-far.nvim",
+    config = true,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
 }

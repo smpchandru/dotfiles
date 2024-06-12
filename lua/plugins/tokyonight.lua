@@ -1,4 +1,5 @@
 return {
+
   "folke/tokyonight.nvim",
   opts = {
     transparent = false,
@@ -14,13 +15,17 @@ return {
     lualine_bold = true,
     dim_inactive = true,
     on_highlights = function(hl, c)
-      hl.WinSeparator = { fg = c.fg_dark, bold = true }
-      hl.CursorLineNr = { fg = c.bg }
-      hl.CmpDocumentation = { fg = c.fg, bg = c.none }
-      hl.CmpBorder = { fg = c.fg, bg = c.none }
-      hl.CmpDocumentationBorder = { fg = c.border_highlight, bg = c.none }
-      hl.TelescopeBorder = { fg = c.border_highlight, bg = c.none }
+      hl.WinSeparator = { fg = c.blue7, bg = c.none, bold = true }
+      hl.NormalNC = { fg = c.fg, bg = c.bg } -- normal text
+      -- hl.CursorLineNr = { fg = c.bg }
+      -- hl.NormalFloat = { fg = c.fg, bg = c.none }
+      -- hl.CmpDocumentation = { fg = c.fg, bg = c.none }
+      -- hl.CmpBorder = { fg = c.bg, bg = c.none }
+      -- hl.CmpDocumentationBorder = { fg = c.border_highlight, bg = c.none }
+      hl.TelescopeBorder = { fg = c.blue7, bg = c.none }
       hl.TelescopeNormal = { fg = c.fg, bg = c.none }
+      hl.FloatBorder = { fg = c.blue7, bg = c.none }
+      hl.FloatNormal = { fg = c.fg, bg = c.none }
       hl.LspSignatureActiveParameter = { fg = c.red, bold = true }
       hl.DiffAdd = { bg = c.gitSigns.add }
       hl.DiffChange = { bg = c.gitSigns.change, fg = c.git.change }

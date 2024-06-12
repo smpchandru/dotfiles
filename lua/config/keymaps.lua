@@ -4,8 +4,7 @@
 local map = vim.keymap.set
 -- map("n", "<Space>", "<NOP>", { noremap = true, silent = true })
 -- map("n", "<Leader>m", require("utils").ToggleMouse, { desc = "Toggle mounse", noremap = true, silent = true })
-map("n", "<Leader>ff", ":lua MiniFiles.open()<CR>", { desc = "File System edit", noremap = true, silent = true })
-map("n", "<leader>o", "<cmd>SymbolsOutline<CR>", { desc = "Symbol outline", silent = true })
+map("n", "<Leader>F", ":lua MiniFiles.open()<CR>", { desc = "File System edit", noremap = true, silent = true })
 -- resize windows
 map("n", "<C-M-j>", ":resize -2<CR>", { desc = "Resize window down", noremap = true, silent = true })
 map("n", "<C-M-k>", ":resize +2<CR>", { desc = "Resize window up", noremap = true, silent = true })
@@ -21,13 +20,8 @@ map("n", "<C-l>", "<C-w>l", { desc = "Move to the right window", silent = true }
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
-map("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "Search files", noremap = true, silent = true })
-map(
-  "n",
-  "<leader>bb",
-  "<cmd>lua require('fzf-lua').buffers()<CR>",
-  { desc = "Search buffers", noremap = true, silent = true }
-)
+map("n", "<C-p>", "<cmd>Telescope find_files <CR>", { desc = "Search files", noremap = true, silent = true })
+map("n", "<leader>bb", "<cmd>Telescope buffers <CR>", { desc = "Search buffers", noremap = true, silent = true })
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
@@ -57,10 +51,5 @@ map("x", "\\p", '"_dP', { desc = "Paste without yank on visual selection", silen
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 map("n", "<leader>gg", "<cmd>Neogit<CR>", { desc = "status" })
 map("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", { desc = "diff" })
-map("n", "<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>", { desc = "unstage hunk" })
-map("n", "<leader>hr", "<cmd>Gitsigns reset_hunk<CR>", { desc = "reset hunk" })
-map("n", "<leader>hs", "<cmd>Gitsigns stage_hunk<CR>", { desc = "stage hunk" })
-map("n", "[c", "<cmd>Gitsigns hunk_prev<CR>", { desc = "hunk previous" })
-map("n", "]c", "<cmd>Gitsigns hunk_next<CR>", { desc = "hunk next" })
 map("n", "<F2>", vim.lsp.buf.rename, { desc = "Rename" })
 map("n", "<F11>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", { desc = "Neovide toggle full screen" })

@@ -1,58 +1,58 @@
 return {
-	"folke/noice.nvim",
-	event = "VeryLazy",
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-	},
-	opts = {
-		lsp = {
-			override = {
-				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-				["vim.lsp.util.stylize_markdown"] = true,
-				["cmp.entry.get_documentation"] = true,
-			},
-		},
-		routes = {
-			{
-				filter = {
-					event = "msg_show",
-					any = {
-						{ find = "%d+L, %d+B" },
-						{ find = "; after #%d+" },
-						{ find = "; before #%d+" },
-					},
-				},
-				view = "mini",
-			},
-		},
-		presets = {
-			bottom_search = false,
-			command_palette = true,
-			long_message_to_split = true,
-			inc_rename = true,
-			lsp_doc_border = true,
-		},
-		views = {
-			popupmenu = {
-				relative = "editor",
-				position = {
-					row = 8,
-					col = "50%",
-				},
-				size = {
-					width = 60,
-					height = 10,
-				},
-				border = {
-					padding = { 0, 0 },
-				},
-				win_options = {
-					winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
-				},
-			},
-		},
-	},
-	--[[ -- stylua: ignore
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+  },
+  opts = {
+    lsp = {
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
+      },
+    },
+    routes = {
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
+          },
+        },
+        view = "mini",
+      },
+    },
+    presets = {
+      bottom_search = false,
+      command_palette = true,
+      long_message_to_split = true,
+      inc_rename = true,
+      lsp_doc_border = true,
+    },
+    views = {
+      popupmenu = {
+        relative = "editor",
+        position = {
+          row = 8,
+          col = "50%",
+        },
+        size = {
+          width = 60,
+          height = 10,
+        },
+        border = {
+          padding = { 0, 0 },
+        },
+        win_options = {
+          winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
+        },
+      },
+    },
+  },
+  --[[ -- stylua: ignore
 	keys = {
 		{ "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                 desc = "Redirect Cmdline" },
 		{ "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },

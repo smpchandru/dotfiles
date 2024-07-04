@@ -5,6 +5,9 @@ return {
     "MunifTanjim/nui.nvim",
   },
   opts = {
+    popupmenu = {
+      backend = "cmp",
+    },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -48,6 +51,7 @@ return {
         },
         win_options = {
           winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
+          winblend = 0,
         },
       },
     },

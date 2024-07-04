@@ -9,6 +9,7 @@ return {
     event = "VeryLazy",
   },
   { "smpchandru/gruvbox-material" },
+  -- { "sainnhe/gruvbox-material" },
   -- { "chaoren/vim-wordmotion", event = "VeryLazy" },
   -- { "rhysd/git-messenger.vim", event = "VeryLazy" },
   { "kevinhwang91/nvim-bqf", event = "VeryLazy" },
@@ -125,4 +126,5 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  { "akinsho/bufferline.nvim", enabled = false },
 }

@@ -3,7 +3,7 @@ local M = {
   "echasnovski/mini.nvim",
   config = function()
     require("mini.bracketed").setup()
-    require("mini.surround").setup()
+    -- require("mini.surround").setup()
     require("mini.bufremove").setup()
     require("mini.move").setup()
     require("mini.pick").setup()

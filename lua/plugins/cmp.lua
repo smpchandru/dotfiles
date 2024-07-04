@@ -56,13 +56,21 @@ local M = {
         --[[ completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(), ]]
         documentation = {
-          border = "single",
-          winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+          border = "rounded",
+          -- winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+          -- winhighlight = "Normal:NormalFloat, FloatBorder:FloatBorder",
+          -- winhighlight = "None:CmpPmenu,CursorLine:PmenuSel,Search:None,Normal:NormalFloat",
+          winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeBorder",
+          winblend = 0,
+          -- winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeBorder,CursorLine:PmenuSel,Search:None",
         },
         completion = {
-          border = "single",
-          -- winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-          winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+          border = "rounded",
+          -- winhighlight = "None:Pmenu,CursorLine:PmenuSel,Search:None,Normal:NormalFloat",
+          -- winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
+          -- winhighlight = "Normal:TelescopeNormal",
+          winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeBorder,CursorLine:PmenuSel,Search:None",
+          winblend = 0,
         },
       },
       confirmation = {
@@ -150,7 +158,7 @@ local M = {
         { name = "vim-dadbod-completion" },
         { name = "latex_symbols" },
         { name = "buffer", keyword_length = 5 },
-        { name = "dictionary", keyword_length = 4 },
+        { name = "dictionary" },
         -- { name = "nvim_lsp_signature_help" },
       },
     })

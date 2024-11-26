@@ -141,6 +141,7 @@ return {
     "3rd/image.nvim",
     opts = {
       backend = "kitty", -- whatever backend you would like to use
+      enabled = not vim.g.neovide,
       max_width = 100,
       max_height = 12,
       max_height_window_percentage = math.huge,
@@ -160,7 +161,7 @@ return {
       vim.g.molten_auto_open_output = false
     end,
     keys = {
-      { "<leader>mi", ":MoltenInit<cr>", desc = "[m]olten [i]nit" },
+      { "<leader>mi", ":MoltenInit<cr>",           desc = "[m]olten [i]nit" },
       {
         "<leader>mv",
         ":<C-u>MoltenEvaluateVisual<cr>",

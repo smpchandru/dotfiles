@@ -1,6 +1,6 @@
 return {
-  { "tpope/vim-repeat", event = "InsertEnter" },
-  { "numToStr/Comment.nvim", config = true, event = "VeryLazy" },
+  { "tpope/vim-repeat",      event = "InsertEnter" },
+  { "numToStr/Comment.nvim", config = true,        event = "VeryLazy" },
   {
     "tpope/vim-fugitive",
     dependencies = {
@@ -12,9 +12,9 @@ return {
   -- { "sainnhe/gruvbox-material" },
   -- { "chaoren/vim-wordmotion", event = "VeryLazy" },
   -- { "rhysd/git-messenger.vim", event = "VeryLazy" },
-  { "kevinhwang91/nvim-bqf", event = "VeryLazy" },
-  { "ThePrimeagen/vim-be-good", event = "VeryLazy" },
-  { "mg979/vim-visual-multi", event = "VeryLazy" },
+  { "kevinhwang91/nvim-bqf",      event = "VeryLazy" },
+  { "ThePrimeagen/vim-be-good",   event = "VeryLazy" },
+  { "mg979/vim-visual-multi",     event = "VeryLazy" },
   {
     "nvim-tree/nvim-web-devicons",
   },
@@ -119,10 +119,10 @@ return {
       "TmuxNavigatePrevious",
     },
     keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },

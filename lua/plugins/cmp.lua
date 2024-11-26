@@ -37,6 +37,12 @@ local M = {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
+    local winblend = 0
+    local border = "rounded"
+    if vim.g.neovide then
+      winblend = 40
+      border = "rounded"
+    end
     cmp.setup({
       completion = {
         autocomplete = {
@@ -56,21 +62,21 @@ local M = {
         --[[ completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(), ]]
         documentation = {
-          border = "rounded",
+          border = border,
           -- winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
           -- winhighlight = "Normal:NormalFloat, FloatBorder:FloatBorder",
           -- winhighlight = "None:CmpPmenu,CursorLine:PmenuSel,Search:None,Normal:NormalFloat",
           winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeBorder",
-          winblend = 0,
+          winblend = winblend,
           -- winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeBorder,CursorLine:PmenuSel,Search:None",
         },
         completion = {
-          border = "rounded",
+          border = border,
           -- winhighlight = "None:Pmenu,CursorLine:PmenuSel,Search:None,Normal:NormalFloat",
           -- winhighlight = "NormalFloat:TelescopeNormal,FloatBorder:TelescopeBorder",
           -- winhighlight = "Normal:TelescopeNormal",
           winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeBorder,CursorLine:PmenuSel,Search:None",
-          winblend = 0,
+          winblend = winblend,
         },
       },
       confirmation = {
@@ -158,7 +164,7 @@ local M = {
         { name = "vim-dadbod-completion" },
         { name = "latex_symbols" },
         { name = "buffer", keyword_length = 5 },
-        { name = "dictionary" },
+        -- { name = "dictionary" },
         -- { name = "nvim_lsp_signature_help" },
       },
     })

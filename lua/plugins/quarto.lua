@@ -139,9 +139,9 @@ return {
   -- },
   {
     "3rd/image.nvim",
+    eabled = not vim.g.neovide,
     opts = {
       backend = "kitty", -- whatever backend you would like to use
-      enabled = not vim.g.neovide,
       max_width = 100,
       max_height = 12,
       max_height_window_percentage = math.huge,
@@ -154,14 +154,14 @@ return {
     "benlubas/molten-nvim",
     -- enabled = false,
     build = ":UpdateRemotePlugins",
-    dependencies = { "3rd/image.nvim" },
+    -- dependencies = { "3rd/image.nvim" },
     init = function()
       vim.g.molten_image_provider = "image.nvim"
       vim.g.molten_output_win_max_height = 20
       vim.g.molten_auto_open_output = false
     end,
     keys = {
-      { "<leader>mi", ":MoltenInit<cr>",           desc = "[m]olten [i]nit" },
+      { "<leader>mi", ":MoltenInit<cr>", desc = "[m]olten [i]nit" },
       {
         "<leader>mv",
         ":<C-u>MoltenEvaluateVisual<cr>",

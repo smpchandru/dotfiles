@@ -20,8 +20,8 @@ map("n", "<C-l>", "<C-w>l", { desc = "Move to the right window", silent = true }
 map("n", "<C-f>", "<C-f>M", { desc = "Scroll down", noremap = true, silent = true })
 map("n", "<C-b>", "<C-b>M", { desc = "Scroll up", noremap = true, silent = true })
 -- navigate buffers
-map("n", "<C-p>", "<cmd>Telescope find_files <CR>", { desc = "Search files", noremap = true, silent = true })
-map("n", "<leader>bb", "<cmd>Telescope buffers <CR>", { desc = "Search buffers", noremap = true, silent = true })
+map("n", "<C-p>", "<cmd>FzfLua files <CR>", { desc = "Search files", noremap = true, silent = true })
+map("n", "<leader>bb", "<cmd>FzfLua buffers <CR>", { desc = "Search buffers", noremap = true, silent = true })
 map("n", "Y", "y$", { desc = "Copy till end of line", silent = true, noremap = true })
 map("n", "C", "c$", { silent = true, noremap = true })
 map("n", "<C-/>", "gcc", { desc = "(n)Comment line", remap = true, silent = true })
